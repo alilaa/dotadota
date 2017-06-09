@@ -71,7 +71,7 @@ namespace DotaDota {
 
             public void GenerateSitOut(int noOfSitOut) {
                 Random rnd = new Random();
-                int currentFaction = rnd.Next(1);
+                int currentFaction = 0;
 
                 for (int i = 0; i < noOfSitOut; i++) {
                     var sitOutGuid =

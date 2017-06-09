@@ -24,7 +24,7 @@ var Team = React.createClass({
         var draftDict = this.props.draftDict;
         return (
             <div className="Team">
-                <p className={getFaction(team.faction)}>{getFaction(team.faction)}</p>
+                <a href={"/"+getFaction(team.faction)}><p className={getFaction(team.faction)}>{getFaction(team.faction)}</p></a>
                 <ListGroupItem key={team.id}>
 
                     <HeroDraft players={team.players} draftDict={draftDict} admin={this.props.admin}/>

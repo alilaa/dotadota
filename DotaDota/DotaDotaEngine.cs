@@ -85,6 +85,40 @@ namespace DotaDota {
             return draft.ToString();
         }
 
+        public static string CreateRandomDraftWithTeam(List<string> players, int poolSize, int noOfSitOut = 0) {
+            Random rnd = new Random();
+            if (AllHeroes == null) {
+                return string.Empty;
+            }
+            ClearAllPlayerHeroSelected();
+            BusinessEntity.Draft draft;
+            List<BusinessEntity.Player> currentPlayers = new List<BusinessEntity.Player>();
+
+            foreach (var player in players) {
+                currentPlayers.Add(AllPlayers.Single(p=>p.id.ToString() == player));
+            }
+            //we need to make sure that the players with the lowest number of sit-out are placed in different teams.
+            var radiant = new BusinessEntity.Team(currentPlayers.OrderBy(pl => pl.SitOutCount).Take(1).ToList(), BusinessEntity.Faction.Radiant);
+            var dire = new BusinessEntity.Team(currentPlayers.OrderBy(pl => pl.SitOutCount).Skip(1).Take(1).ToList(), BusinessEntity.Faction.Dire);
+
+            var usedPlayers = new List<BusinessEntity.Player>();
+            usedPlayers.AddRange(currentPlayers.OrderBy(pl => pl.SitOutCount).Take(2).ToList());
+
+            var team1 = currentPlayers.Except(usedPlayers).OrderBy(x => rnd.Next()).Take((currentPlayers.Count-2) / 2 + currentPlayers.Count%2).ToList();
+            usedPlayers.AddRange(team1);
+            var team2 = currentPlayers.Except(usedPlayers).OrderBy(x => rnd.Next()).Take(currentPlayers.Count / 2).ToList();
+
+            radiant.Players.AddRange(team1);
+            dire.Players.AddRange(team2);
+
+            draft = new BusinessEntity.Draft(new List<BusinessEntity.Team> {dire,radiant}, AllPlayers);
+            draft.GenerateHeroPools(poolSize);
+            draft.GenerateSitOut(noOfSitOut);
+            LatestDraft = draft;
+            CurrentPlayers = currentPlayers;
+            return draft.ToString();
+        }
+
         public static BusinessEntity.PlayerHeroPool GetPlayerHeroPool(Guid guid) {
             var playerHeroPool = LatestDraft.PlayerHeroPoolDict[guid];
             return playerHeroPool;

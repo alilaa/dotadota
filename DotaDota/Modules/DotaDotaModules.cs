@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web.UI;
 using Nancy;
+using Nancy.Extensions;
+using Nancy.ModelBinding;
+using Newtonsoft.Json;
 
 namespace DotaDota.Modules {
 
@@ -162,6 +167,19 @@ namespace DotaDota.Modules {
             };
         }
     }
+
+    public class APIResetWithTeamsModule : NancyModule {
+        public APIResetWithTeamsModule() {
+            Post["api/ResetWithTeams/{poolSize}/{noOfSitOut}"] = parameters => {
+                var players = this.Bind<List<string>>();
+                var s = DotaDotaEngine.CreateRandomDraftWithTeam(players, parameters.poolSize, parameters.noOfSitOut);
+                //Pump the updated context to the clients with SignalR
+                DotaDotaEngine.broadcastHub.Clients.All.dataPump(DotaDotaEngine.LatestDraft);
+                return true;
+            };
+        }
+    }
+
     public class APINewTeamsModule : NancyModule {
         public APINewTeamsModule() {
             Post["api/NewTeams"] = parameters => {

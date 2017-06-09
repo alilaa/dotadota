@@ -10,6 +10,7 @@ import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import { Router, Route, Link, browserHistory } from 'react-router';
 import Button from 'react-bootstrap/lib/Button';
+import { FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap';
 import $ from 'jquery';
 import 'signalr/jquery.signalR.js';
 
@@ -156,7 +157,13 @@ var FetchData = React.createClass({
 
 var DraftPlayerDisplay = React.createClass({
     getInitialState: function() {
-        return {allPlayers: [], playersInDraft: [], playerGuidInDraft: []};
+        return {allPlayers: [], playersInDraft: [], playerGuidInDraft: [], heroPoolSize: "", sitOutCount: ""};
+    },
+    handleHeroChange (event) {
+        this.setState({ heroPoolSize: event.target.value });
+    },
+    handleSitOutChange (event) {
+        this.setState({ sitOutCount: event.target.value });
     },
     render: function() {
 
@@ -165,16 +172,34 @@ var DraftPlayerDisplay = React.createClass({
         return (
             <Col xs={6}>
                 <Row>
-                    <Col xs={12}>
-                        <Button btn btn-default btn-lg onClick={()=>this.onClick("api/newTeams")}>New Draft (resuffle existing teams with new draft heroes)</Button>
-                        <Button btn btn-default btn-lg onClick={()=>this.onClick("api/newDraft")}>Same teams new draft (just new heroes to pick from)</Button>
-                        <Button btn btn-default btn-lg onClick={()=>this.onClick("api/Reset/12/3/2")}>Completely new draft (6vs6) (will reset player links)</Button>
-                        <Button btn btn-default btn-lg onClick={()=>this.onClick("api/Reset/14/3/2")}>Completely new draft (7vs7) (will reset player links)</Button>
-                        <Button btn btn-default btn-lg onClick={()=>this.onClick("api/Reset/16/3/2")}>Completely new draft (8vs8) (will reset player links)</Button>
-                        <Button btn btn-default btn-lg onClick={()=>this.onClick("api/Reset/18/3/2")}>Completely new draft (9vs9) (will reset player links)</Button>
-                        <Button btn btn-default btn-lg onClick={()=>this.onClick("api/Reset/20/3/2")}>Completely new draft (10vs10) (will reset player links)</Button>
-                        <Button btn btn-default btn-lg onClick={()=>this.onClick("api/ClearAllPlayerSitOut")}>Reset all sitout counters</Button>
+                    <Col xs={6}>
+                        <br/>
+                        <div className="player">Drafter:</div>
+                        <FormGroup>
+                            <InputGroup>
+                                <FormControl
+                                    type="text"
+                                    value={this.state.heroPoolSize}
+                                    placeholder={"Heropool Size"}
+                                    onChange={this.handleHeroChange}
+                                />
+                                <FormControl
+                                    type="text"
+                                    value={this.state.sitOutCount}
+                                    placeholder={"Number of sitouts"}
+                                    onChange={this.handleSitOutChange}
+                                />
+                            </InputGroup>
+                        </FormGroup>
+                        <Button btn btn-default btn-lg onClick={()=>this.postNewDraft()}>Generate New Draft</Button>
+                        <br/>
+                        <br/>
                     </Col>
+                    <col xs={6}>
+                        <br/>
+                        <div className="player">Misc:</div>
+                        <Button btn btn-default btn-lg onClick={()=>this.apiCall("api/ClearAllPlayerSitOut")}>Reset all sitout counters</Button>
+                    </col>
                 </Row>
                 <Row>
                     <Col xs={6}>
@@ -221,6 +246,28 @@ var DraftPlayerDisplay = React.createClass({
                 return playerInDraftInst.id;
             });
         }
+    },
+    apiCall: function (apiCall) {
+        this.serverRequest = $.post('/'+apiCall+'/', function (result) {
+
+        });
+
+    },
+    postNewDraft: function(){
+        if(this.state.playerGuidInDraft.length % 2 === 1 && this.state.sitOutCount % 2 !== 1){
+            alert("The number of players in the draft is uneven. Sitout count must be uneven!");
+            return;
+        }
+        var myJsonString = JSON.stringify(this.state.playerGuidInDraft);
+        $.ajax({
+            type: "POST",
+            url: "/api/ResetWithTeams/" + this.state.heroPoolSize + "/" + this.state.sitOutCount,
+            data: myJsonString,
+            dataType: "json",
+            contentType: "application/json",
+            success: function() { this.propagateState(true);},
+            failure: function() { alert("Dotadota failed you :("); }
+        });
     }
 });
 
@@ -236,7 +283,7 @@ var InDraft = React.createClass({
             if(!renderIn && playerGuidInDraft.indexOf(playerInstance.id) !== -1){return;};
             return  (
                 <ListGroupItem onClick={() => callbackPlayerClick(playerInstance.id)}>
-                    {playerInstance.name}
+                    <div className="buttonPlayer"> {playerInstance.name}</div>
                 </ListGroupItem>
             )
         });
