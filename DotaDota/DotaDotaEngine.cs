@@ -23,7 +23,7 @@ namespace DotaDota {
             if (engine != null) {
                 return;
             }
-            for (int i = 1; i <= 30; i++) {
+            for (int i = 1; i <= 18; i++) {
                 AllPlayers.Add(new BusinessEntity.Player("Player" + i));
             }
             engine = new DotaDotaEngine();
@@ -148,6 +148,10 @@ namespace DotaDota {
             }
         }
 
+        public static void AddPlayerName(string name) {
+            AllPlayers.Add(new BusinessEntity.Player(name));
+        }
+
         public static void UpdatePlayerSitOut(Guid playerGuid, int newSitOut) {
             BusinessEntity.Player player = LatestDraft.GetPlayers().FirstOrDefault(p => p.id == playerGuid);
             if (player != null) {
@@ -172,10 +176,10 @@ namespace DotaDota {
             DotaDotaEngine.LatestDraft.Teams[1].Players = team2;
         }
 
-        public static void CreateRandomNewDraft() {
+        public static void CreateRandomNewDraft(int heroPoolSize, int noOfSitOut) {
             ClearAllPlayerHeroSelected();
-            LatestDraft.GenerateHeroPools(3);
-            LatestDraft.GenerateSitOut(2);
+            LatestDraft.GenerateHeroPools(heroPoolSize);
+            LatestDraft.GenerateSitOut(noOfSitOut);
         }
     }
 }

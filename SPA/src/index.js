@@ -192,6 +192,7 @@ var DraftPlayerDisplay = React.createClass({
                             </InputGroup>
                         </FormGroup>
                         <Button btn btn-default btn-lg onClick={()=>this.postNewDraft()}>Generate New Draft</Button>
+                        <Button btn btn-default btn-lg onClick={()=>this.apiCall("api/NewDraft/"+ this.state.heroPoolSize + "/" + this.state.sitOutCount)}>Only new HeroPools and Sitout</Button>
                         <br/>
                         <br/>
                     </Col>
@@ -205,7 +206,7 @@ var DraftPlayerDisplay = React.createClass({
                     <Col xs={6}>
                         <ListGroup>
                             <ListGroupItem>
-                            <div className="player">In draft</div>
+                            <div className="player">In next draft ({this.state.playerGuidInDraft.length})</div>
                             </ListGroupItem>
                         </ListGroup>
                         <InDraft allPlayers={this.props.allPlayers} playerGuidInDraft={this.state.playerGuidInDraft} callbackPlayerClick={this.inDraftCallback} renderIn={true} />
@@ -213,7 +214,7 @@ var DraftPlayerDisplay = React.createClass({
                     <Col xs={6}>
                         <ListGroup>
                             <ListGroupItem>
-                                <div className="player">Out of draft</div>
+                                <div className="player">Out of next draft ({this.props.allPlayers.length - this.state.playerGuidInDraft.length})</div>
                             </ListGroupItem>
                         </ListGroup>
                         <InDraft allPlayers={this.props.allPlayers} playerGuidInDraft={this.state.playerGuidInDraft} callbackPlayerClick={this.outDraftCallback} />
@@ -258,6 +259,10 @@ var DraftPlayerDisplay = React.createClass({
             alert("The number of players in the draft is uneven. Sitout count must be uneven!");
             return;
         }
+        if(this.state.playerGuidInDraft.length % 2 === 0 && this.state.sitOutCount % 2 !== 0){
+            alert("The number of players in the draft is even. Sitout count must be even!");
+            return;
+        }
         var myJsonString = JSON.stringify(this.state.playerGuidInDraft);
         $.ajax({
             type: "POST",
@@ -289,10 +294,63 @@ var InDraft = React.createClass({
         });
         console.log("playersMap");
         console.log(playersMap);
+        if(!renderIn) {
+            return (
+                <ListGroup>{playersMap}
+                    <ListGroupItem>
+                        <PlayerAdding />
+                    </ListGroupItem>
+                </ListGroup>
+            )
+        }
         return (
             <ListGroup>{playersMap}</ListGroup>
         )
     },
+});
+
+var PlayerAdding = React.createClass({
+    getInitialState: function(){
+        return{value: ""};
+    },
+    handleChange (event) {
+        this.setState({ value: event.target.value });
+    },
+    render: function () {
+        return (<div>
+            <FormGroup>
+                <InputGroup>
+                    <FormControl
+                        type="text"
+                        value={this.state.value}
+                        placeholder={"New player name"}
+                        onChange={this.handleChange}
+                        onKeyPress={this.handleKeyPress}
+                    />
+                    <InputGroup.Addon>
+                        <Glyphicon onClick={this.onOkClick} role="button" glyph="ok"></Glyphicon>
+                    </InputGroup.Addon>
+                </InputGroup>
+            </FormGroup>
+        </div>);
+    },
+    onOkClick: function(){
+        console.log("on ok click in player edit");
+        console.log(this.state.value);
+        this.apiCall("api/AddPlayerName/"+ this.state.value);
+        this.setState({ value: "" });
+    },
+    apiCall: function (apiCall) {
+        this.serverRequest = $.post('/'+apiCall+'/', function (result) {
+
+        });
+
+    },
+    handleKeyPress: function(target) {
+        if(target.charCode==13){
+            this.onOkClick();
+        }
+    }
 });
 
 var PlayerView = React.createClass({

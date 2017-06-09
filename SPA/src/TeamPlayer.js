@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import Table from 'react-bootstrap/lib/Table';
-import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Button from 'react-bootstrap/lib/Button';
 import $ from 'jquery';
 
-
-var TeamPlayer
-    ;
-TeamPlayer = React.createClass({
+var TeamPlayer = React.createClass({
     getInitialState: function () {
         return {team: team(), player: "", draftDict: {}, playerTeam: false};
     },
@@ -43,9 +38,7 @@ TeamPlayer = React.createClass({
         var player = this.props.player;
         var draftDict = this.props.draftDict;
         var playerTeam = this.props.playerTeam;
-        //var selectedHero = findSelectedHero(team, player, playerTeam);
-        //console.log("selectedHero");
-        //console.log(selectedHero);
+
         return (
             <div className="Team">
                 <a href={"/"+getFaction(team.faction)}><p className={getFaction(playerTeam ? 0 : 1)}>{getFaction(team.faction)}</p></a>
@@ -70,21 +63,6 @@ TeamPlayer = React.createClass({
         );
     }
 });
-
-var findSelectedHero = function(team, player, playerTeam){
-    if(!playerTeam){
-        return null;
-    }
-    if(!team){
-        return null;
-    }
-    var playerHeroPool;
-    team.forEach(function(p){if(p.id===player){playerHeroPool = p.heroPool}},this);
-    var playerSelectedHero;
-    playerHeroPool.forEach(function(h){if(h.selected){playerSelectedHero = h}},this);
-    return playerSelectedHero;
-
-};
 
 var HeroDraftPlayer = React.createClass({
     getInitialState: function(){

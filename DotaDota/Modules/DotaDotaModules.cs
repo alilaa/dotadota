@@ -126,6 +126,16 @@ namespace DotaDota.Modules {
             };
         }
     }
+    public class AddPlayerNameAPIModule : NancyModule {
+        public AddPlayerNameAPIModule() {
+            Post["api/AddPlayerName/{name}"] = parameters => {
+                DotaDotaEngine.AddPlayerName(parameters.name);
+                //Pump the updated context to the clients with SignalR
+                DotaDotaEngine.broadcastHub.Clients.All.dataPump(DotaDotaEngine.LatestDraft);
+                return true;
+            };
+        }
+    }
 
     public class UpdatePlayerSitOutAPIModule : NancyModule {
         public UpdatePlayerSitOutAPIModule() {
@@ -184,7 +194,7 @@ namespace DotaDota.Modules {
         public APINewTeamsModule() {
             Post["api/NewTeams"] = parameters => {
                 DotaDotaEngine.CreateRandomNewTeams();
-                DotaDotaEngine.CreateRandomNewDraft();
+                DotaDotaEngine.CreateRandomNewDraft(3,2);
                 //Pump the updated context to the clients with SignalR
                 DotaDotaEngine.broadcastHub.Clients.All.dataPump(DotaDotaEngine.LatestDraft);
                 return true;
@@ -193,8 +203,8 @@ namespace DotaDota.Modules {
     }
     public class APINewDraftModule : NancyModule {
         public APINewDraftModule() {
-            Post["api/NewDraft"] = parameters => {
-                DotaDotaEngine.CreateRandomNewDraft();
+            Post["api/NewDraft/{poolSize}/{noOfSitOut}"] = parameters => {
+                DotaDotaEngine.CreateRandomNewDraft(parameters.poolSize, parameters.noOfSitOut);
                 //Pump the updated context to the clients with SignalR
                 DotaDotaEngine.broadcastHub.Clients.All.dataPump(DotaDotaEngine.LatestDraft);
                 return true;

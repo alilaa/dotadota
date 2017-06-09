@@ -118,6 +118,7 @@
     </None>
     <None Include="Properties\PublishProfiles\dota2dota - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\dota2dota - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\dota2test - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
