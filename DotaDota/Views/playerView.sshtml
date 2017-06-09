@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Draft</title>
+
+	<style type="text/css">
+	img.desaturate {
+	filter: grayscale(100%);
+	}
+
+		body {
+			text-align: center;
+		}
+
+	</style>
+	<script>
+    function play() {
+        var audio = document.getElementById('audio');
+            audio.play();
+    }
+	</script>
+
+</head>
+<body>
+	Pick your hero:
+	<br>
+	@Each.HeroPool
+	<a href="@Current.id;/"><img src="http://cdn.dota2.com/apps/dota2/images/heroes/@Current.shortCode;_full.png" @IfNot.Selected;class="desaturate"@EndIf;></a>
+	<audio id="audio" src="@current.spawn;" ></audio>
+	@EndEach
+</html>

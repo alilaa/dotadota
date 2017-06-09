@@ -1,0 +1,8 @@
+.vs
+packages
+DotaDota/bin/
+DotaDota/obj/
+DotaDota/Properties/PublishProfiles/
+SPA/.idea
+SPA/dist
+SPA/node_modules/

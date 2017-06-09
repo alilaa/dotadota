@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>NancyAspNetHost1</title>
+
+	<style type="text/css">
+
+		body {
+			text-align: center;
+		}
+
+	</style>
+
+</head>
+<body>
+	<img src="http://cdn.dota2.com/apps/dota2/images/heroes/slark_full.png" alt="Nancy logo" /><br />
+	DOTA DOTA drafting engine is in the works. Stay tuned.
+
+	@Model.id
+	@Model.name
+	@Model.localized_name
+</body>
+</html>

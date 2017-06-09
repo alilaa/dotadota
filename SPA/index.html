@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Dota Dota Drafter v0.0.2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" />
+    <style type="text/css">
+      img.desaturate {
+        filter: grayscale(100%);
+      }
+      img.glow{
+        box-shadow: 0px 0px 40px #ffd700;
+        width: 270px; /* you can use % */
+        height: auto;
+      }
+      img.alliedTeam{
+        border:2px solid green;
+      }
+      img.enemyTeam{
+        border:2px solid red;
+      }
+      .box {
+        height:100vh;
+        text-align: center;
+      }
+      .ODire {
+        color: red !important;
+        font-size: 70px;
+        font-weight:bold;
+        vertical-align: middle;
+      }
+      .OWaterboys{
+        color: yellow !important;
+        font-size: 50px;
+        font-weight:bold;
+        vertical-align: middle;
+      }
+      .ORadiant {
+        color: green !important;
+        font-size: 70px;
+        font-weight:bold;
+        vertical-align: middle;
+      }
+      .well {
+        background-color: rgba(0, 0, 0, 0);
+        border: 0px;
+      }
+
+      .list-group-item {
+        background-color: rgba(0, 0, 0, 0.7);
+        border: 0px;
+      }
+      .OPlayer{
+        font-size: 50px;
+      }
+
+      .padding{
+        padding-top: 20px;
+        padding-right:20px;
+        padding-bottom:20px;
+        padding-left:20px;
+      }
+
+      .Radiant {
+        color: green !important;
+        font-size: 32px;
+        font-weight:bold;
+        vertical-align: middle;
+      }
+      .Team{
+        vertical-align: middle;
+      }
+      .Dire {
+        color: red !important;
+        font-size: 32px;
+        font-weight:bold;
+      }
+      p.player {
+               font-size: 16px;
+               font-weight:bold;
+               vertical-align: middle;
+               color: lightgrey;
+             }
+      div.player {
+        font-size: 16px;
+        font-weight:bold;
+        vertical-align: middle;
+        color: lightgrey;
+      }
+      div.sitOut {
+        font-size: 10px;
+        font-weight:normal;
+        vertical-align: middle;
+        color: lightgrey;
+      }
+      p.currentPlayer {
+        font-size: 32px;
+        font-weight:bold;
+        vertical-align: middle;
+        color: lightgrey;
+      }
+      p.image {
+        vertical-align: middle;
+      }
+      body {
+        background-image: url("http://images.akamai.steamusercontent.com/ugc/250338226330955759/B5A564FD41F573DE64593366C1D0443799D0161A/");
+        background-repeat: no-repeat;
+        background-color: black;
+        height: 100%;
+        margin: 0;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id='root'>
+    </div>
+    <div id='imageProgress'>
+    </div>
+    <script src="/static/bundle.js"></script>
+  </body>
+</html>
