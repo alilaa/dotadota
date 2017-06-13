@@ -22,36 +22,37 @@ var TeamPlayer = React.createClass({
         console.log("picked");
     },
     render: function () {
-        var dire = {
-            backgroundImage: 'url(http://i.imgur.com/HrIj50P.jpg)',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'contain',
-            textAlign: 'center'
-        };
-        var radiant = {
-            backgroundImage: 'url(http://i.imgur.com/h7laoUJ.png)',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'contain',
-            textAlign: 'center'
-        };
         var team = this.props.team;
         var player = this.props.player;
         var draftDict = this.props.draftDict;
         var playerTeam = this.props.playerTeam;
-
+        var overviewAndPlayer = function(){
+            if(playerTeam){
+                return (
+                    <div>
+                        <a href={"/overview"}><div className="overview">Overview</div></a>
+                        <a href={"/"+getFaction(team.faction)}><p className={getFaction(team.faction)}>{getFaction(team.faction)}</p></a>
+                    </div>
+                )
+            }
+            //not team faction
+            return (
+                <div><p className={getFaction(team.faction)}>{getFaction(team.faction)}</p></div>
+            )
+        }
         return (
             <div className="Team">
-                <a href={"/"+getFaction(team.faction)}><p className={getFaction(playerTeam ? 0 : 1)}>{getFaction(team.faction)}</p></a>
+                {overviewAndPlayer()}
                 <Row>
                     <HeroDraftPlayer players={team && team.players} player={player} draftDict={draftDict}
-                                     playerTeam={playerTeam}/>
+                                     playerTeam={playerTeam} faction={team.faction}/>
                 </Row>
                 <Row>
                     <HeroDraftPlayerDraft players={team && team.players} player={player} draftDict={draftDict}
                                           playerTeam={playerTeam}/>
                 </Row>
                 <Row>
-                    <Col xsOffset={1} xs={8}>
+                    <Col>
                         <div className={playerTeam ? "padding" : "hidden"}>
                             <Button className="btn btn-success btn-block" onClick={this.onClick}>
                                 <div className="padding">PICK HERO!</div>
@@ -66,7 +67,7 @@ var TeamPlayer = React.createClass({
 
 var HeroDraftPlayer = React.createClass({
     getInitialState: function(){
-        return{players: [], player: "", draftDict: [], playerTeam: false};
+        return{players: [], player: "", draftDict: [], playerTeam: false, sitOutArray: [], faction: 0, length: 0};
     },
     componentDidMount: function(){
         var component = this;
@@ -74,20 +75,25 @@ var HeroDraftPlayer = React.createClass({
         console.log(component.props);
         component.forceUpdate();
     },
+    sitOutCallback: function(id){
+        this.state.sitOutArray.push(id);
+    },
     render: function(){
+        var component = this;
         var player = this.props.player;
         var draftDict = this.props.draftDict;
         var playerTeam = this.props.playerTeam;
         var players = this.props.players;
+
         var playersMap = this.props.players.map(function(playerInstance){
-            if(playerInstance.id === player){return null;};
+            if(component.state.sitOutArray.indexOf(playerInstance.id) !== -1 ){
+                return null;
+            }
             return  (
-                <div>
-                    <Col xs={1}>
-                        <p className="player">{playerInstance.name}</p>
-                        <p className="team"><HeroPoolPlayer currentPlayer={playerInstance.id} draftDict={draftDict} player={player} playerTeam={playerTeam}/></p>
+                    <Col xs={1} xsPush={2}>
+                        <div className="player">{playerInstance.name}</div>
+                        <div className="team"><HeroPoolPlayer currentPlayer={playerInstance.id} draftDict={draftDict} player={player} playerTeam={playerTeam} sitOutCallback={component.sitOutCallback} faction={component.props.faction}/></div>
                     </Col>
-                </div>
             )
         });
         if(!playersMap){
@@ -96,6 +102,7 @@ var HeroDraftPlayer = React.createClass({
         if(playersMap.length === 0 || player.length === 0){
             return null;
         }
+        this.state.length = playersMap.length;
         return (
             <div>{playersMap}</div>
         )
@@ -138,14 +145,15 @@ var HeroDraftPlayerDraft = React.createClass({
 
 var HeroPoolPlayer = React.createClass({
     getInitialState: function(){
-        return{currentPlayer: [], draftDict: draftDict(), player:""};
-    } ,
+        return{currentPlayer: [], draftDict: draftDict(), player:"", sitOutCallback: function(){}};
+    },
     componentDidMount: function(){
         var component = this;
         console.log(component.props);
         component.forceUpdate();
     },
     render: function(){
+        var sitOutCallback = this.props.sitOutCallback;
         var currentPlayer = this.props.currentPlayer;
         var draftDict = this.props.draftDict;
         var player = this.props.player;
@@ -159,14 +167,20 @@ var HeroPoolPlayer = React.createClass({
         console.log("HeroPoolPlayer");
         console.log(heroPool);
         var image = {};
-        image[0] = <img className={playerTeam ? "alliedTeam":"enemyTeam"} src="https://placeholdit.imgix.net/~text?txtsize=7&bg=000000&txtclr=000000&txt=59%C3%9733&w=59&h=33"/>;
+        image[0] = <img className={getFaction(this.props.faction)} src="https://placeholdit.imgix.net/~text?txtsize=7&bg=000000&txtclr=000000&txt=59%C3%9733&w=59&h=33"/>;
+        var sitOut = false;
         var playerPool = heroPool && heroPool.forEach(function(hero){
-                if(heroPoolSelectedHeroId === hero.id) {
-                    image[0] = <img className={playerTeam ? "alliedTeam":"enemyTeam"} src={imageUrlSmall(hero.shortCode)} />;
+            if (hero.name === "iceFrog"){
+                if(!sitOut){sitOutCallback(currentPlayer);}
+                sitOut = true;
+                image[0] = <img src="http://i.imgur.com/S910xlC.png" width="33"/>;
+            }
+            if(heroPoolSelectedHeroId === hero.id) {
+                    image[0] = <img className={getFaction(this.props.faction)} src={imageUrlSmall(hero.shortCode)} />;
                     return;
                 }
-                if(hero.selected && playerTeam){
-                    image[0] = <img src={imageUrlSmall(hero.shortCode)} className={playerTeam ? "alliedTeam desaturate":"enemyTeam desaturate"}/>;
+            if(hero.selected && playerTeam){
+                    image[0] = <img src={imageUrlSmall(hero.shortCode)} className={getFaction(this.props.faction) + " desaturate"}/>;
                     return;
                 }
             },this);

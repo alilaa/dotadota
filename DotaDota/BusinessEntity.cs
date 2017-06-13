@@ -47,26 +47,50 @@ namespace DotaDota {
             }
 
             public void GenerateHeroPools(int poolSize) {
-                if (poolSize < 3) {
-                    throw new ApplicationException("Minimum poolsize is 3");
-                }
                 Random rnd = new Random();
                 Dictionary<Guid,PlayerHeroPool> newPoolDict = new Dictionary<Guid, PlayerHeroPool>();
                 var allHeroes = DotaDotaEngine.AllHeroes;
                 var usedHeroes = new List<Heroes.Hero>();
+                //Death Pophet, bloodseeker and silencer are banned in 10v10
+                if(GetPlayers().Count > 10) { 
+                    usedHeroes.AddRange(allHeroes.Where(hero => hero.id == 43 || hero.id == 4 || hero.id == 75));
+                }
                 foreach (var player in GetPlayers()) {
-                    //We need to first make sure we get 1 int, srt & agi. Then we take randomly.
-                    var heroPool = 
-                        new List<Heroes.Hero>() {
-                            allHeroes.Except(usedHeroes).OrderBy(x => rnd.Next()).SkipWhile(h => h.primaryAttribute != Attribute.Strength).Take(1).First(),
-                            allHeroes.Except(usedHeroes).OrderBy(x => rnd.Next()).SkipWhile(h => h.primaryAttribute != Attribute.Agility).Take(1).First(),
-                            allHeroes.Except(usedHeroes).OrderBy(x => rnd.Next()).SkipWhile(h => h.primaryAttribute != Attribute.Intellect).Take(1).First()
-                        };
-                    heroPool.AddRange(allHeroes.Except(usedHeroes.Concat(heroPool)).OrderBy(x => rnd.Next()).Take(poolSize-3).ToList());
+                    var heroPool = poolSize > 2 ? HeroPoolLarge(poolSize, allHeroes, usedHeroes, rnd) : HeroPoolSmall(poolSize, allHeroes, usedHeroes, rnd);
                     usedHeroes.AddRange(heroPool);
                     newPoolDict.Add(player.id, new PlayerHeroPool(heroPool.ToList()));
                 }
                     this.PlayerHeroPoolDict = newPoolDict;
+            }
+
+            private static List<Heroes.Hero> HeroPoolLarge(int poolSize, List<Heroes.Hero> allHeroes, List<Heroes.Hero> usedHeroes, Random rnd) {
+                //We need to first make sure we get 1 int, srt & agi. Then we take randomly.
+                var heroPool =
+                    new List<Heroes.Hero> {
+                        allHeroes.Except(usedHeroes)
+                                 .OrderBy(x => rnd.Next())
+                                 .SkipWhile(h => h.primaryAttribute != Attribute.Strength)
+                                 .Take(1)
+                                 .First(),
+                        allHeroes.Except(usedHeroes)
+                                 .OrderBy(x => rnd.Next())
+                                 .SkipWhile(h => h.primaryAttribute != Attribute.Agility)
+                                 .Take(1)
+                                 .First(),
+                        allHeroes.Except(usedHeroes)
+                                 .OrderBy(x => rnd.Next())
+                                 .SkipWhile(h => h.primaryAttribute != Attribute.Intellect)
+                                 .Take(1)
+                                 .First()
+                    };
+                heroPool.AddRange(allHeroes.Except(usedHeroes.Concat(heroPool)).OrderBy(x => rnd.Next()).Take(poolSize - 3).ToList());
+                return heroPool;
+            }
+
+            private static List<Heroes.Hero> HeroPoolSmall(int poolSize, List<Heroes.Hero> allHeroes, List<Heroes.Hero> usedHeroes, Random rnd) {
+                List<Heroes.Hero> heroPool = allHeroes.Except(usedHeroes)
+                                 .OrderBy(x => rnd.Next()).Take(poolSize).ToList();
+                return heroPool;
             }
 
             public void GenerateSitOut(int noOfSitOut) {

@@ -49,7 +49,7 @@ namespace DotaDota.Modules {
     public class DraftModule : NancyModule {
         public DraftModule() {
             string s;
-            s = DotaDotaEngine.LatestDraft == null ? DotaDotaEngine.CreateRandomDraft(14, 3) : DotaDotaEngine.LatestDraft.ToString();
+            s = DotaDotaEngine.LatestDraft == null ? DotaDotaEngine.CreateRandomDraft(17, 3, 1) : DotaDotaEngine.LatestDraft.ToString();
             Get["/draft"] = parameters => {
                 return View["draft", s];
             };
@@ -67,7 +67,7 @@ namespace DotaDota.Modules {
     public class GetDraftModule : NancyModule {
         public GetDraftModule() {
             if (DotaDotaEngine.LatestDraft == null) {
-                DotaDotaEngine.CreateRandomDraft(14, 3);
+                DotaDotaEngine.CreateRandomDraft(17,3,1);
             }
             Get["/api/GetDraft"] = parameters => {
                 return Response.AsJson(DotaDotaEngine.LatestDraft);

@@ -255,6 +255,14 @@ var DraftPlayerDisplay = React.createClass({
 
     },
     postNewDraft: function(){
+        if(this.state.heroPoolSize === ""){
+            alert("Set Heropool size!");
+            return;
+        }
+        if(this.state.sitOutCount === ""){
+            alert("Set sitOutCount size!");
+            return;
+        }
         if(this.state.playerGuidInDraft.length % 2 === 1 && this.state.sitOutCount % 2 !== 1){
             alert("The number of players in the draft is uneven. Sitout count must be uneven!");
             return;
@@ -385,6 +393,28 @@ var PlayerView = React.createClass({
     },
 
     render: function() {
+        var dire = {
+            //backgroundImage: 'url(http://i.imgur.com/HrIj50P.jpg)',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'contain',
+            textAlign: 'center',
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            top: '0',
+            left: '0',
+        };
+        var radiant = {
+            //backgroundImage: 'url(http://i.imgur.com/h7laoUJ.png)',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'contain',
+            textAlign: 'center',
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            top: '0',
+            left: '0',
+        };
         console.log(this.state.data);
         var teams = this.state.data.teams;
         var draftDict = this.state.data.playerHeroPoolDict;
@@ -398,14 +428,16 @@ var PlayerView = React.createClass({
             return null;
         }
         return (
-            <Grid>
-                <Row>
-                    <Col><TeamPlayer team={teams[playerTeamArrayId]} player={player} draftDict={draftDict} playerTeam={true}/></Col>
-                </Row>
+            <div style={playerFaction === 1 ? dire:radiant}>
+                <Grid>
                     <Row>
-                    <Col><TeamPlayer team={teams[playerTeamArrayId===1?0:1]} player={player} draftDict={draftDict} playerTeam={false}/></Col>
-                </Row>
-            </Grid>
+                        <Col><TeamPlayer team={teams[playerTeamArrayId]} player={player} draftDict={draftDict} playerTeam={true}/></Col>
+                    </Row>
+                    <Row>
+                        <Col><TeamPlayer team={teams[playerTeamArrayId===1?0:1]} player={player} draftDict={draftDict} playerTeam={false}/></Col>
+                    </Row>
+                </Grid>
+            </div>
         );
     }
 });

@@ -67,6 +67,7 @@ namespace DotaDota {
         }
 
         public static string CreateRandomDraft(int noOfPlayers, int poolSize, int noOfSitOut = 0) {
+            Random rnd = new Random();
             if (AllHeroes == null) {
                 return string.Empty;
             }
@@ -77,7 +78,21 @@ namespace DotaDota {
             for (int i = 1; i <= noOfPlayers; i++) {
                 currentPlayers.Add(AllPlayers[i-1]);
             }
-            draft = new BusinessEntity.Draft(new List<BusinessEntity.Team>() {new BusinessEntity.Team(currentPlayers.Take(noOfPlayers/2).ToList(),BusinessEntity.Faction.Dire), new BusinessEntity.Team(currentPlayers.Skip(noOfPlayers/2).Take(noOfPlayers/2).ToList(), BusinessEntity.Faction.Radiant)}, AllPlayers);
+            //we need to make sure that the players with the lowest number of sit-out are placed in different teams.
+            var radiant = new BusinessEntity.Team(currentPlayers.OrderBy(pl => pl.SitOutCount).Take(1).ToList(), BusinessEntity.Faction.Radiant);
+            var dire = new BusinessEntity.Team(currentPlayers.OrderBy(pl => pl.SitOutCount).Skip(1).Take(1).ToList(), BusinessEntity.Faction.Dire);
+
+            var usedPlayers = new List<BusinessEntity.Player>();
+            usedPlayers.AddRange(currentPlayers.OrderBy(pl => pl.SitOutCount).Take(2).ToList());
+
+            var team1 = currentPlayers.Except(usedPlayers).OrderBy(x => rnd.Next()).Take((currentPlayers.Count - 2) / 2 + currentPlayers.Count % 2).ToList();
+            usedPlayers.AddRange(team1);
+            var team2 = currentPlayers.Except(usedPlayers).OrderBy(x => rnd.Next()).Take(currentPlayers.Count / 2).ToList();
+
+            radiant.Players.AddRange(team1);
+            dire.Players.AddRange(team2);
+
+            draft = new BusinessEntity.Draft(new List<BusinessEntity.Team> { dire, radiant }, AllPlayers);
             draft.GenerateHeroPools(poolSize);
             draft.GenerateSitOut(noOfSitOut);
             LatestDraft = draft;
@@ -136,10 +151,11 @@ namespace DotaDota {
         }
 
         public static void SetPlayerHeroPicked(Guid playerGuid) {
-            //LatestDraft.PlayerHeroPoolDict[playerGuid].HeroPool.ForEach(h => h.Selected = false);
+            try {
             var selectedId = LatestDraft.PlayerHeroPoolDict[playerGuid].HeroPool.First(h => h.Selected).id;
             LatestDraft.PlayerHeroPoolDict[playerGuid].SelectedHeroId = selectedId;
-        }
+        } catch (Exception) { }
+    }
 
         public static void UpdatePlayerName(Guid playerGuid, string newName) {
             BusinessEntity.Player player = LatestDraft.GetPlayers().FirstOrDefault(p => p.id == playerGuid);
