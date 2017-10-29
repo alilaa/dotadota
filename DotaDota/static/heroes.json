@@ -21,7 +21,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Anti-Mage/"
+    "url": "https://www.dota2.com/hero/Anti-Mage/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/5/50/Anti_spawn_01.mp3"
   },
   {
     "id": 2,
@@ -44,7 +45,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Axe/"
+    "url": "https://www.dota2.com/hero/Axe/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/5/51/Axe_spawn_01.mp3"
   },
   {
     "id": 3,
@@ -67,7 +69,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Bane/"
+    "url": "https://www.dota2.com/hero/Bane/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/4/42/Bane_spawn_01.mp3"
   },
   {
     "id": 4,
@@ -93,7 +96,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Bloodseeker/"
+    "url": "https://www.dota2.com/hero/Bloodseeker/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/4/48/Blod_spawn_01.mp3"
   },
   {
     "id": 5,
@@ -118,7 +122,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Crystal_Maiden/"
+    "url": "https://www.dota2.com/hero/Crystal_Maiden/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/a/a6/Cm_spawn_01.mp3"
   },
   {
     "id": 6,
@@ -140,7 +145,8 @@
     "movementTurnRate": 0.7,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Drow_Ranger/"
+    "url": "https://www.dota2.com/hero/Drow_Ranger/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/e/e0/Dro_spawn_03.mp3"
   },
   {
     "id": 7,
@@ -163,7 +169,8 @@
     "movementTurnRate": 0.9,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Earthshaker/"
+    "url": "https://www.dota2.com/hero/Earthshaker/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/4/4a/Erth_spawn_01.mp3"
   },
   {
     "id": 8,
@@ -185,7 +192,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Juggernaut/"
+    "url": "https://www.dota2.com/hero/Juggernaut/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/7/7c/Jug_spawn_03.mp3"
   },
   {
     "id": 9,
@@ -209,7 +217,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Mirana/"
+    "url": "https://www.dota2.com/hero/Mirana/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/8/83/Mir_spawn_01.mp3"
   },
   {
     "id": 11,
@@ -232,7 +241,8 @@
     "movementTurnRate": 1,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Shadow_Fiend/"
+    "url": "https://www.dota2.com/hero/Shadow_Fiend/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/7/7b/Nev_spawn_11.mp3"
   },
   {
     "id": 10,
@@ -256,7 +266,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 3,
-    "url": "https://www.dota2.com/hero/Morphling/"
+    "url": "https://www.dota2.com/hero/Morphling/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/9/9f/Mrph_spawn_01.mp3"
   },
   {
     "id": 12,
@@ -281,7 +292,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Phantom_Lancer/"
+    "url": "https://www.dota2.com/hero/Phantom_Lancer/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/3/3c/Plance_spawn_01.mp3"
   },
   {
     "id": 13,
@@ -304,7 +316,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Puck/"
+    "url": "https://www.dota2.com/hero/Puck/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/d/d6/Puck_spawn_01.mp3"
   },
   {
     "id": 14,
@@ -327,7 +340,8 @@
     "movementTurnRate": 0.7,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Pudge/"
+    "url": "https://www.dota2.com/hero/Pudge/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/f/f1/Pud_spawn_01.mp3"
   },
   {
     "id": 15,
@@ -350,7 +364,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Razor/"
+    "url": "https://www.dota2.com/hero/Razor/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/9/95/Raz_spawn_01.mp3"
   },
   {
     "id": 16,
@@ -376,7 +391,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Sand_King/"
+    "url": "https://www.dota2.com/hero/Sand_King/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/3/31/Skg_spawn_02.mp3"
   },
   {
     "id": 17,
@@ -402,7 +418,8 @@
     "movementTurnRate": 0.8,
     "cmEnabled": true,
     "complexity": 3,
-    "url": "https://www.dota2.com/hero/Storm_Spirit/"
+    "url": "https://www.dota2.com/hero/Storm_Spirit/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/7/77/Ss_spawn_01.mp3"
   },
   {
     "id": 18,
@@ -426,7 +443,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Sven/"
+    "url": "https://www.dota2.com/hero/Sven/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/e/e1/Sven_spawn_03.mp3"
   },
   {
     "id": 19,
@@ -451,7 +469,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Tiny/"
+    "url": "https://www.dota2.com/hero/Tiny/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/5/53/Tiny_spawn_09.mp3"
   },
   {
     "id": 20,
@@ -477,7 +496,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Vengeful_Spirit/"
+    "url": "https://www.dota2.com/hero/Vengeful_Spirit/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/a/a1/Vng_spawn_01.mp3"
   },
   {
     "id": 21,
@@ -503,7 +523,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Windranger/"
+    "url": "https://www.dota2.com/hero/Windranger/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/1/17/Wind_spawn_01.mp3"
   },
   {
     "id": 22,
@@ -523,7 +544,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Zeus/"
+    "url": "https://www.dota2.com/hero/Zeus/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/1/1c/Zuus_spawn_01.mp3"
   },
   {
     "id": 23,
@@ -547,7 +569,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Kunkka/"
+    "url": "https://www.dota2.com/hero/Kunkka/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/6/6d/Kunk_spawn_03.mp3"
   },
   {
     "id": 25,
@@ -570,7 +593,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Lina/"
+    "url": "https://www.dota2.com/hero/Lina/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/1/10/Lina_spawn_01.mp3"
   },
   {
     "id": 31,
@@ -591,7 +615,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Lich/"
+    "url": "https://www.dota2.com/hero/Lich/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/6/65/Lich_spawn_01.mp3"
   },
   {
     "id": 26,
@@ -614,7 +639,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Lion/"
+    "url": "https://www.dota2.com/hero/Lion/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/a/ac/Lion_spawn_01.mp3"
   },
   {
     "id": 27,
@@ -640,7 +666,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Shadow_Shaman/"
+    "url": "https://www.dota2.com/hero/Shadow_Shaman/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/7/7b/Shad_spawn_01.mp3"
   },
   {
     "id": 28,
@@ -664,7 +691,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Slardar/"
+    "url": "https://www.dota2.com/hero/Slardar/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/b/b4/Slar_spawn_01.mp3"
   },
   {
     "id": 29,
@@ -687,7 +715,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Tidehunter/"
+    "url": "https://www.dota2.com/hero/Tidehunter/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/b/bc/Tide_spawn_09.mp3"
   },
   {
     "id": 30,
@@ -711,7 +740,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Witch_Doctor/"
+    "url": "https://www.dota2.com/hero/Witch_Doctor/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/0/03/Wdoc_spawn_02.mp3"
   },
   {
     "id": 32,
@@ -733,7 +763,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Riki/"
+    "url": "https://www.dota2.com/hero/Riki/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/3/32/Riki_spawn_03.mp3"
   },
   {
     "id": 33,
@@ -756,7 +787,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Enigma/"
+    "url": "https://www.dota2.com/hero/Enigma/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/9/92/Enig_spawn_01.mp3"
   },
   {
     "id": 34,
@@ -778,7 +810,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Tinker/"
+    "url": "https://www.dota2.com/hero/Tinker/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/3/3f/Tink_spawn_01.mp3"
   },
   {
     "id": 35,
@@ -799,7 +832,8 @@
     "movementTurnRate": 0.7,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Sniper/"
+    "url": "https://www.dota2.com/hero/Sniper/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/1/11/Snip_spawn_01.mp3"
   },
   {
     "id": 36,
@@ -822,7 +856,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Necrophos/"
+    "url": "https://www.dota2.com/hero/Necrophos/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/f/fa/Necr_spawn_01.mp3"
   },
   {
     "id": 37,
@@ -844,7 +879,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Warlock/"
+    "url": "https://www.dota2.com/hero/Warlock/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/8/89/Warl_spawn_01.mp3"
   },
   {
     "id": 38,
@@ -869,7 +905,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Beastmaster/"
+    "url": "https://www.dota2.com/hero/Beastmaster/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/5/50/Beas_spawn_01.mp3"
   },
   {
     "id": 39,
@@ -893,7 +930,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Queen_of_Pain/"
+    "url": "https://www.dota2.com/hero/Queen_of_Pain/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/f/f9/Pain_spawn_04.mp3"
   },
   {
     "id": 40,
@@ -917,7 +955,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Venomancer/"
+    "url": "https://www.dota2.com/hero/Venomancer/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/c/c8/Venm_spawn_01.mp3"
   },
   {
     "id": 41,
@@ -943,7 +982,8 @@
     "movementTurnRate": 1,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Faceless_Void/"
+    "url": "https://www.dota2.com/hero/Faceless_Void/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/4/46/Face_spawn_01.mp3"
   },
   {
     "id": 42,
@@ -971,7 +1011,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Wraith_King/"
+    "url": "https://www.dota2.com/hero/Wraith_King/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/5/5c/Wraith_spawn_01.mp3"
   },
   {
     "id": 43,
@@ -996,7 +1037,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Death_Prophet/"
+    "url": "https://www.dota2.com/hero/Death_Prophet/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/5/5a/Dpro_spawn_01.mp3"
   },
   {
     "id": 44,
@@ -1019,7 +1061,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Phantom_Assassin/"
+    "url": "https://www.dota2.com/hero/Phantom_Assassin/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/4/41/Phass_spawn_01.mp3"
   },
   {
     "id": 45,
@@ -1040,7 +1083,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Pugna/"
+    "url": "https://www.dota2.com/hero/Pugna/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/0/0b/Pugna_spawn_01.mp3"
   },
   {
     "id": 46,
@@ -1061,7 +1105,8 @@
     "movementTurnRate": 0.7,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Templar_Assassin/"
+    "url": "https://www.dota2.com/hero/Templar_Assassin/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/e/ed/Temp_spawn_02.mp3"
   },
   {
     "id": 47,
@@ -1084,7 +1129,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Viper/"
+    "url": "https://www.dota2.com/hero/Viper/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/4/41/Vipe_spawn_01.mp3"
   },
   {
     "id": 48,
@@ -1106,7 +1152,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Luna/"
+    "url": "https://www.dota2.com/hero/Luna/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/f/f6/Luna_spawn_01.mp3"
   },
   {
     "id": 49,
@@ -1133,7 +1180,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Dragon_Knight/"
+    "url": "https://www.dota2.com/hero/Dragon_Knight/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/5/5d/DK_drag_spawn_01.mp3"
   },
   {
     "id": 50,
@@ -1155,7 +1203,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Dazzle/"
+    "url": "https://www.dota2.com/hero/Dazzle/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/7/76/Dazz_spawn_01.mp3"
   },
   {
     "id": 51,
@@ -1178,7 +1227,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Clockwerk/"
+    "url": "https://www.dota2.com/hero/Clockwerk/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/8/84/Ratt_spawn_05.mp3"
   },
   {
     "id": 52,
@@ -1202,7 +1252,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Leshrac/"
+    "url": "https://www.dota2.com/hero/Leshrac/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/c/c6/Lesh_spawn_01.mp3"
   },
   {
     "id": 53,
@@ -1228,7 +1279,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Natures_Prophet/"
+    "url": "https://www.dota2.com/hero/Natures_Prophet/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/f/f5/Furi_spawn_01.mp3"
   },
   {
     "id": 54,
@@ -1252,7 +1304,8 @@
     "movementTurnRate": 1,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Lifestealer/"
+    "url": "https://www.dota2.com/hero/Lifestealer/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/d/de/Lifest_spawn_01.mp3"
   },
   {
     "id": 55,
@@ -1277,7 +1330,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Dark_Seer/"
+    "url": "https://www.dota2.com/hero/Dark_Seer/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/8/8f/Dkseer_spawn_01.mp3"
   },
   {
     "id": 56,
@@ -1299,7 +1353,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Clinkz/"
+    "url": "https://www.dota2.com/hero/Clinkz/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/7/74/Clinkz_spawn_01.mp3"
   },
   {
     "id": 57,
@@ -1321,7 +1376,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Omniknight/"
+    "url": "https://www.dota2.com/hero/Omniknight/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/d/db/Omni_spawn_01.mp3"
   },
   {
     "id": 58,
@@ -1345,7 +1401,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Enchantress/"
+    "url": "https://www.dota2.com/hero/Enchantress/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/5/53/Ench_spawn_01.mp3"
   },
   {
     "id": 59,
@@ -1367,7 +1424,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Huskar/"
+    "url": "https://www.dota2.com/hero/Huskar/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/6/6c/Husk_spawn_01.mp3"
   },
   {
     "id": 60,
@@ -1393,7 +1451,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Night_Stalker/"
+    "url": "https://www.dota2.com/hero/Night_Stalker/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/6/69/Nstalk_spawn_01.mp3"
   },
   {
     "id": 61,
@@ -1419,7 +1478,7 @@
     "cmEnabled": true,
     "complexity": 2,
     "url": "https://www.dota2.com/hero/Broodmother/",
-    "spawn": "https://hydra-media.cursecdn.com/dota2.gamepedia.com/0/08/Broo_spawn_01.mp3"
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/0/08/Broo_spawn_01.mp3"
   },
   {
     "id": 62,
@@ -1442,7 +1501,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Bounty_Hunter/"
+    "url": "https://www.dota2.com/hero/Bounty_Hunter/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/c/c1/Bount_spawn_01.mp3"
   },
   {
     "id": 63,
@@ -1463,7 +1523,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Weaver/"
+    "url": "https://www.dota2.com/hero/Weaver/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/1/10/Weav_spawn_01.mp3"
   },
   {
     "id": 64,
@@ -1486,7 +1547,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Jakiro/"
+    "url": "https://www.dota2.com/hero/Jakiro/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/4/40/Jak_spawn_01.mp3"
   },
   {
     "id": 65,
@@ -1511,7 +1573,8 @@
     "movementTurnRate": 1,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Batrider/"
+    "url": "https://www.dota2.com/hero/Batrider/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/1/12/Bat_spawn_01.mp3"
   },
   {
     "id": 66,
@@ -1533,7 +1596,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 3,
-    "url": "https://www.dota2.com/hero/Chen/"
+    "url": "https://www.dota2.com/hero/Chen/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/e/e3/Chen_spawn_01.mp3"
   },
   {
     "id": 67,
@@ -1555,7 +1619,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Spectre/"
+    "url": "https://www.dota2.com/hero/Spectre/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/8/87/Spec_spawn_01.mp3"
   },
   {
     "id": 69,
@@ -1581,7 +1646,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Doom/"
+    "url": "https://www.dota2.com/hero/Doom/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/f/f8/Doom_spawn_01.mp3"
   },
   {
     "id": 68,
@@ -1605,7 +1671,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Ancient_Apparition/"
+    "url": "https://www.dota2.com/hero/Ancient_Apparition/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/5/5a/Appa_spawn_01.mp3"
   },
   {
     "id": 70,
@@ -1628,7 +1695,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Ursa/"
+    "url": "https://www.dota2.com/hero/Ursa/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/b/be/Ursa_spawn_01.mp3"
   },
   {
     "id": 71,
@@ -1654,7 +1722,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Spirit_Breaker/"
+    "url": "https://www.dota2.com/hero/Spirit_Breaker/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/e/e4/Spir_spawn_01.mp3"
   },
   {
     "id": 72,
@@ -1676,7 +1745,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Gyrocopter/"
+    "url": "https://www.dota2.com/hero/Gyrocopter/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/9/9a/Gyro_spawn_01.mp3"
   },
   {
     "id": 73,
@@ -1701,7 +1771,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Alchemist/"
+    "url": "https://www.dota2.com/hero/Alchemist/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/1/19/Alch_spawn_01.mp3"
   },
   {
     "id": 74,
@@ -1725,7 +1796,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 3,
-    "url": "https://www.dota2.com/hero/Invoker/"
+    "url": "https://www.dota2.com/hero/Invoker/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/4/41/Invo_spawn_02.mp3"
   },
   {
     "id": 75,
@@ -1749,7 +1821,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Silencer/"
+    "url": "https://www.dota2.com/hero/Silencer/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/9/97/Silen_spawn_01.mp3"
   },
   {
     "id": 76,
@@ -1773,7 +1846,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Outworld_Devourer/"
+    "url": "https://www.dota2.com/hero/Outworld_Devourer/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/7/74/Odest_spawn_02.mp3"
   },
   {
     "id": 77,
@@ -1797,7 +1871,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Lycan/"
+    "url": "https://www.dota2.com/hero/Lycan/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/1/11/Lycan_spawn_01.mp3"
   },
   {
     "id": 78,
@@ -1823,7 +1898,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 3,
-    "url": "https://www.dota2.com/hero/Brewmaster/"
+    "url": "https://www.dota2.com/hero/Brewmaster/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/d/df/Brew_spawn_01.mp3"
   },
   {
     "id": 79,
@@ -1848,7 +1924,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Shadow_Demon/"
+    "url": "https://www.dota2.com/hero/Shadow_Demon/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/a/aa/Shadow_demon_spawn_01.mp3"
   },
   {
     "id": 80,
@@ -1873,7 +1950,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 3,
-    "url": "https://www.dota2.com/hero/Lone_Druid/"
+    "url": "https://www.dota2.com/hero/Lone_Druid/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/d/df/Lone_druid_spawn_01.mp3"
   },
   {
     "id": 81,
@@ -1897,7 +1975,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Chaos_Knight/"
+    "url": "https://www.dota2.com/hero/Chaos_Knight/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/5/5f/Chaknight_spawn_02.mp3"
   },
   {
     "id": 82,
@@ -1925,7 +2004,8 @@
     "movementTurnRate": 0.65,
     "cmEnabled": true,
     "complexity": 3,
-    "url": "https://www.dota2.com/hero/Meepo/"
+    "url": "https://www.dota2.com/hero/Meepo/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/c/c6/Meepo_spawn_01.mp3"
   },
   {
     "id": 83,
@@ -1949,7 +2029,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Treant_Protector/"
+    "url": "https://www.dota2.com/hero/Treant_Protector/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/f/f3/Treant_spawn_02.mp3"
   },
   {
     "id": 84,
@@ -1975,7 +2056,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Ogre_Magi/"
+    "url": "https://www.dota2.com/hero/Ogre_Magi/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/3/31/Ogmag_spawn_01.mp3"
   },
   {
     "id": 85,
@@ -2000,7 +2082,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Undying/"
+    "url": "https://www.dota2.com/hero/Undying/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/0/0a/Undying_spawn_01.mp3"
   },
   {
     "id": 86,
@@ -2024,7 +2107,8 @@
     "movementTurnRate": 0.7,
     "cmEnabled": true,
     "complexity": 3,
-    "url": "https://www.dota2.com/hero/Rubick/"
+    "url": "https://www.dota2.com/hero/Rubick/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/b/bd/Rubick_spawn_04.mp3"
   },
   {
     "id": 87,
@@ -2049,7 +2133,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Disruptor/"
+    "url": "https://www.dota2.com/hero/Disruptor/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/a/aa/Dis_spawn_01.mp3"
   },
   {
     "id": 88,
@@ -2074,7 +2159,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Nyx_Assassin/"
+    "url": "https://www.dota2.com/hero/Nyx_Assassin/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/7/71/Nyx_spawn_01.mp3"
   },
   {
     "id": 89,
@@ -2101,7 +2187,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Naga_Siren/"
+    "url": "https://www.dota2.com/hero/Naga_Siren/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/5/57/Naga_spawn_02.mp3"
   },
   {
     "id": 90,
@@ -2127,7 +2214,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Keeper_of_the_Light/"
+    "url": "https://www.dota2.com/hero/Keeper_of_the_Light/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/5/56/Keep_spawn_01.mp3"
   },
   {
     "id": 91,
@@ -2151,7 +2239,8 @@
     "movementTurnRate": 0.7,
     "cmEnabled": true,
     "complexity": 3,
-    "url": "https://www.dota2.com/hero/Io/"
+    "url": "https://www.dota2.com/hero/Io/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/6/66/Wisp_Spawn_respawn.mp3"
   },
   {
     "id": 92,
@@ -2177,7 +2266,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 3,
-    "url": "https://www.dota2.com/hero/Visage/"
+    "url": "https://www.dota2.com/hero/Visage/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/1/11/Visa_spawn_01.mp3"
   },
   {
     "id": 93,
@@ -2202,7 +2292,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Slark/"
+    "url": "https://www.dota2.com/hero/Slark/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/8/8f/Slark_spawn_01.mp3"
   },
   {
     "id": 94,
@@ -2227,7 +2318,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Medusa/"
+    "url": "https://www.dota2.com/hero/Medusa/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/3/32/Medus_spawn_01.mp3"
   },
   {
     "id": 95,
@@ -2253,7 +2345,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Troll_Warlord/"
+    "url": "https://www.dota2.com/hero/Troll_Warlord/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/c/cd/Troll_spawn_01.mp3"
   },
   {
     "id": 96,
@@ -2279,7 +2372,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Centaur_Warrunner/"
+    "url": "https://www.dota2.com/hero/Centaur_Warrunner/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/d/d9/Cent_spawn_01.mp3"
   },
   {
     "id": 97,
@@ -2305,7 +2399,8 @@
     "movementTurnRate": 0.8,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Magnus/"
+    "url": "https://www.dota2.com/hero/Magnus/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/c/cc/Magn_spawn_01.mp3"
   },
   {
     "id": 98,
@@ -2331,7 +2426,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Timbersaw/"
+    "url": "https://www.dota2.com/hero/Timbersaw/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/f/fe/Timb_spawn_01.mp3"
   },
   {
     "id": 99,
@@ -2357,7 +2453,8 @@
     "movementTurnRate": 1,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Bristleback/"
+    "url": "https://www.dota2.com/hero/Bristleback/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/f/fb/Bristle_spawn_01.mp3"
   },
   {
     "id": 100,
@@ -2381,7 +2478,8 @@
     "movementTurnRate": 0.7,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Tusk/"
+    "url": "https://www.dota2.com/hero/Tusk/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/5/56/Tusk_spawn_01.mp3"
   },
   {
     "id": 101,
@@ -2403,7 +2501,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Skywrath_Mage/"
+    "url": "https://www.dota2.com/hero/Skywrath_Mage/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/e/ec/Drag_spawn_02.mp3"
   },
   {
     "id": 102,
@@ -2427,7 +2526,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Abaddon/"
+    "url": "https://www.dota2.com/hero/Abaddon/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/5/5f/Abad_spawn_01.mp3"
   },
   {
     "id": 103,
@@ -2453,7 +2553,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Elder_Titan/"
+    "url": "https://www.dota2.com/hero/Elder_Titan/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/8/80/Elder_spawn_01.mp3"
   },
   {
     "id": 104,
@@ -2480,7 +2581,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 1,
-    "url": "https://www.dota2.com/hero/Legion_Commander/"
+    "url": "https://www.dota2.com/hero/Legion_Commander/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/1/1a/Legcom_spawn_01.mp3"
   },
   {
     "id": 106,
@@ -2507,7 +2609,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Ember_Spirit/"
+    "url": "https://www.dota2.com/hero/Ember_Spirit/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/f/fb/Embr_spawn_01.mp3"
   },
   {
     "id": 107,
@@ -2534,7 +2637,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 3,
-    "url": "https://www.dota2.com/hero/Earth_Spirit/"
+    "url": "https://www.dota2.com/hero/Earth_Spirit/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/f/ff/Earthspi_spawn_02.mp3"
   },
   {
     "id": 109,
@@ -2558,7 +2662,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Terrorblade/"
+    "url": "https://www.dota2.com/hero/Terrorblade/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/c/c1/Terr_spawn_01.mp3"
   },
   {
     "id": 110,
@@ -2584,7 +2689,8 @@
     "movementTurnRate": 1,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Phoenix/"
+    "url": "https://www.dota2.com/hero/Phoenix/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/1/18/Phoenix_bird_respawn.mp3"
   },
   {
     "id": 111,
@@ -2609,7 +2715,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 3,
-    "url": "https://www.dota2.com/hero/Oracle/"
+    "url": "https://www.dota2.com/hero/Oracle/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/7/79/Orac_spawn_01.mp3"
   },
   {
     "id": 105,
@@ -2630,7 +2737,8 @@
     "movementTurnRate": 0.5,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Techies/"
+    "url": "https://www.dota2.com/hero/Techies/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/5/56/Tech_spawn_01.mp3"
   },
   {
     "id": 112,
@@ -2652,7 +2760,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Winter_Wyvern/"
+    "url": "https://www.dota2.com/hero/Winter_Wyvern/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/a/ae/Winwyv_spawn_01.mp3"
   },
   {
     "id": 113,
@@ -2676,7 +2785,8 @@
     "movementTurnRate": 0.4,
     "cmEnabled": true,
     "complexity": 3,
-    "url": "https://www.dota2.com/hero/Arc_Warden/"
+    "url": "https://www.dota2.com/hero/Arc_Warden/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/b/bc/Arcwar_spawn_01.mp3"
   },
   {
     "id": 108,
@@ -2703,7 +2813,8 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/Underlord/"
+    "url": "https://www.dota2.com/hero/Underlord/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/4/4b/Abys_spawn_01.mp3"
   },
   {
     "id": 114,
@@ -2728,6 +2839,7 @@
     "movementTurnRate": 0.6,
     "cmEnabled": true,
     "complexity": 2,
-    "url": "https://www.dota2.com/hero/MonkeyKing/"
+    "url": "https://www.dota2.com/hero/MonkeyKing/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/4/4e/Monkey_spawn_01.mp3"
   }
 ]
