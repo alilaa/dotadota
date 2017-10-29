@@ -108,9 +108,10 @@ namespace DotaDota.Modules {
     public class PlayerHeroPickedAPIModule : NancyModule {
         public PlayerHeroPickedAPIModule() {
             Post["api/PlayerPicked/{guid}"] = parameters => {
-                DotaDotaEngine.SetPlayerHeroPicked(Guid.Parse(parameters.guid));
+                var pickedId = DotaDotaEngine.SetPlayerHeroPicked(Guid.Parse(parameters.guid));
                 //Pump the updated context to the clients with SignalR
                 DotaDotaEngine.broadcastHub.Clients.All.dataPump(DotaDotaEngine.LatestDraft);
+                DotaDotaEngine.broadcastHub.Clients.All.heroPickCallback(DotaDotaEngine.GetPickedHeroSound(pickedId));
                 return true;
             };
         }

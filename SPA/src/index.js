@@ -16,7 +16,7 @@ import 'signalr/jquery.signalR.js';
 
 import Team from './Team';
 import TeamPlayer from './TeamPlayer';
-import OverviewView from './Overview';
+import SoundOverview from './Overview';
 import SetupHub from './Hub';
 
 
@@ -475,5 +475,5 @@ var getPlayerTeamArrayId = function(teams, player){
     }
 };
 
-ReactDOM.render(<Router history={browserHistory}><Route path="/admin" component={FetchData}/><Route path="/player" component={PlayerView}/><Route path="/radiant" faction="1" component={FactionView}/><Route path="/dire" faction="0" component={FactionView}/><Route path="/overview" component={OverviewView}/></Router>, document.getElementById('imageProgress'));
+ReactDOM.render(<Router history={browserHistory}><Route path="/admin" component={FetchData}/><Route path="/player" component={PlayerView}/><Route path="/radiant" faction="1" component={FactionView}/><Route path="/dire" faction="0" component={FactionView}/><Route path="/overview" component={SoundOverview}/></Router>, document.getElementById('imageProgress'));
 

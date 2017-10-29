@@ -3,10 +3,27 @@ import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Button from 'react-bootstrap/lib/Button';
 import $ from 'jquery';
+import Sound from 'react-sound';
+
+var pickedHeroSound = function(player, draftDict, team){
+    console.log("-------------------------------------------------------------------------------------");
+    console.log("player");
+    console.log(player);
+    console.log("draftDict");
+    console.log(draftDict);
+    console.log("team");
+    console.log(team);
+    var pickedHeroItem = $.grep(draftDict[player].heroPool, function(e,i){
+        return e.selected === true
+    })
+    console.log(pickedHeroItem[0] && pickedHeroItem[0].spawn);
+    var spawn = pickedHeroItem[0] && pickedHeroItem[0].spawn;
+    return spawn;
+}
 
 var TeamPlayer = React.createClass({
     getInitialState: function () {
-        return {team: team(), player: "", draftDict: {}, playerTeam: false};
+        return {team: team(), player: "", draftDict: {}, playerTeam: false, soundPlaying: Sound.status.STOPPED};
     },
     componentDidMount: function () {
         var component = this;
@@ -15,11 +32,15 @@ var TeamPlayer = React.createClass({
         component.forceUpdate();
     },
     onClick: function () {
+        console.log(pickedHeroSound(this.props.player, this.props.draftDict, this.props.team));
+        var heroPool = draftDict[this.props.player] && draftDict[this.props.player].heroPool;
+        console.log(this.props.player);
         this.serverRequest = $.post('/api/PlayerPicked/' + this.props.player + '/', function (result) {
 
         });
         //window.location.reload();
         console.log("picked");
+        //this.state.soundPlaying = Sound.status.PLAYING;
     },
     render: function () {
         var team = this.props.team;
@@ -60,6 +81,10 @@ var TeamPlayer = React.createClass({
                         </div>
                     </Col>
                 </Row>
+                <Sound
+                    url={pickedHeroSound(this.props.player, this.props.draftDict, this.props.team)}
+                    playStatus={this.state.soundPlaying}
+                />
             </div>
         );
     }

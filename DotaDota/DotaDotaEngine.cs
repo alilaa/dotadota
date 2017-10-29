@@ -10,7 +10,9 @@ using Newtonsoft.Json;
 
 namespace DotaDota {
     public class DotaDotaEngine {
-        private string getHeroesUrl = "https://raw.githubusercontent.com/zaerl/dota2-info/master/lib/heroes.json";
+        //private string getHeroesUrl = "https://raw.githubusercontent.com/zaerl/dota2-info/master/lib/heroes.json";
+        // Yes; im proud of this.
+        private string getHeroesUrl = "https://raw.githubusercontent.com/alilaa/dotadota/master/DotaDota/heroes.json";
         private static DotaDotaEngine engine;
         public static List<Heroes.Hero> AllHeroes;
         public static BusinessEntity.Draft LatestDraft;
@@ -47,14 +49,14 @@ namespace DotaDota {
                 // Send a request asynchronously continue when complete 
                 client.GetAsync(this.getHeroesUrl).ContinueWith(
                     (requestTask) => {
-                    // Get HTTP response from completed task. 
-                    HttpResponseMessage response = requestTask.Result;
+                        // Get HTTP response from completed task. 
+                        HttpResponseMessage response = requestTask.Result;
 
-                    // Check that response was successful or throw exception 
-                    response.EnsureSuccessStatusCode();
+                        // Check that response was successful or throw exception 
+                        response.EnsureSuccessStatusCode();
 
-                    // Read response asynchronously as JsonValue
-                    var jsonstring = response.Content.ReadAsStringAsync();
+                        // Read response asynchronously as JsonValue
+                        var jsonstring = response.Content.ReadAsStringAsync();
                         jsonstring.Wait();
                         deserializedheroes = JsonConvert.DeserializeObject<List<Heroes.Hero>>(jsonstring.Result);
                         DotaDotaEngine.AllHeroes = deserializedheroes;
@@ -74,9 +76,9 @@ namespace DotaDota {
             ClearAllPlayerHeroSelected();
             BusinessEntity.Draft draft;
             List<BusinessEntity.Player> currentPlayers = new List<BusinessEntity.Player>();
-            
+
             for (int i = 1; i <= noOfPlayers; i++) {
-                currentPlayers.Add(AllPlayers[i-1]);
+                currentPlayers.Add(AllPlayers[i - 1]);
             }
             //we need to make sure that the players with the lowest number of sit-out are placed in different teams.
             var radiant = new BusinessEntity.Team(currentPlayers.OrderBy(pl => pl.SitOutCount).Take(1).ToList(), BusinessEntity.Faction.Radiant);
@@ -110,7 +112,7 @@ namespace DotaDota {
             List<BusinessEntity.Player> currentPlayers = new List<BusinessEntity.Player>();
 
             foreach (var player in players) {
-                currentPlayers.Add(AllPlayers.Single(p=>p.id.ToString() == player));
+                currentPlayers.Add(AllPlayers.Single(p => p.id.ToString() == player));
             }
             //we need to make sure that the players with the lowest number of sit-out are placed in different teams.
             var radiant = new BusinessEntity.Team(currentPlayers.OrderBy(pl => pl.SitOutCount).Take(1).ToList(), BusinessEntity.Faction.Radiant);
@@ -119,14 +121,14 @@ namespace DotaDota {
             var usedPlayers = new List<BusinessEntity.Player>();
             usedPlayers.AddRange(currentPlayers.OrderBy(pl => pl.SitOutCount).Take(2).ToList());
 
-            var team1 = currentPlayers.Except(usedPlayers).OrderBy(x => rnd.Next()).Take((currentPlayers.Count-2) / 2 + currentPlayers.Count%2).ToList();
+            var team1 = currentPlayers.Except(usedPlayers).OrderBy(x => rnd.Next()).Take((currentPlayers.Count - 2) / 2 + currentPlayers.Count % 2).ToList();
             usedPlayers.AddRange(team1);
             var team2 = currentPlayers.Except(usedPlayers).OrderBy(x => rnd.Next()).Take(currentPlayers.Count / 2).ToList();
 
             radiant.Players.AddRange(team1);
             dire.Players.AddRange(team2);
 
-            draft = new BusinessEntity.Draft(new List<BusinessEntity.Team> {dire,radiant}, AllPlayers);
+            draft = new BusinessEntity.Draft(new List<BusinessEntity.Team> { dire, radiant }, AllPlayers);
             draft.GenerateHeroPools(poolSize);
             draft.GenerateSitOut(noOfSitOut);
             LatestDraft = draft;
@@ -140,8 +142,11 @@ namespace DotaDota {
         }
 
         public static void SetPlayerHeroSelected(Guid playerGuid, int heroSelected) {
-            LatestDraft.PlayerHeroPoolDict[playerGuid].HeroPool.ForEach(h => h.Selected = false);
-            LatestDraft.PlayerHeroPoolDict[playerGuid].HeroPool.First(h => h.id==heroSelected).Selected = true;
+            try {
+                LatestDraft.PlayerHeroPoolDict[playerGuid].HeroPool.ForEach(h => h.Selected = false);
+                LatestDraft.PlayerHeroPoolDict[playerGuid].HeroPool.First(h => h.id == heroSelected).Selected = true;
+            }
+            catch (Exception) { }
         }
 
         public static void ClearAllPlayerHeroSelected() {
@@ -150,12 +155,15 @@ namespace DotaDota {
             }
         }
 
-        public static void SetPlayerHeroPicked(Guid playerGuid) {
+        public static int SetPlayerHeroPicked(Guid playerGuid) {
             try {
-            var selectedId = LatestDraft.PlayerHeroPoolDict[playerGuid].HeroPool.First(h => h.Selected).id;
-            LatestDraft.PlayerHeroPoolDict[playerGuid].SelectedHeroId = selectedId;
-        } catch (Exception) { }
-    }
+                var selectedId = LatestDraft.PlayerHeroPoolDict[playerGuid].HeroPool.First(h => h.Selected).id;
+                LatestDraft.PlayerHeroPoolDict[playerGuid].SelectedHeroId = selectedId;
+                return selectedId;
+            }
+            catch (Exception) { }
+            return -1;
+        }
 
         public static void UpdatePlayerName(Guid playerGuid, string newName) {
             BusinessEntity.Player player = LatestDraft.GetPlayers().FirstOrDefault(p => p.id == playerGuid);
@@ -196,6 +204,10 @@ namespace DotaDota {
             ClearAllPlayerHeroSelected();
             LatestDraft.GenerateHeroPools(heroPoolSize);
             LatestDraft.GenerateSitOut(noOfSitOut);
+        }
+
+        public static string GetPickedHeroSound(int pickedId) {
+            return AllHeroes.First(x => x.id == pickedId).spawn;
         }
     }
 }

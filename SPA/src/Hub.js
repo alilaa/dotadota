@@ -1,7 +1,7 @@
 /**
  * Created by an-ali on 2017-06-03.
  */
-var setupHub = function (gotDataCallback) {
+var setupHub = function (gotDataCallback, heroPickCallback) {
     var connection = $.hubConnection();
     var myHub = connection.createHubProxy('myHub1');
 
@@ -9,6 +9,10 @@ var setupHub = function (gotDataCallback) {
 
     myHub.on('dataPump', function (data) {
         gotDataCallback(data);
+    });
+
+    myHub.on('heroPickCallback', function (data) {
+        heroPickCallback(data);
     });
 
     console.log("subscription done");
