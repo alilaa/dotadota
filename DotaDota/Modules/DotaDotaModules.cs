@@ -111,7 +111,11 @@ namespace DotaDota.Modules {
                 var pickedId = DotaDotaEngine.SetPlayerHeroPicked(Guid.Parse(parameters.guid));
                 //Pump the updated context to the clients with SignalR
                 DotaDotaEngine.broadcastHub.Clients.All.dataPump(DotaDotaEngine.LatestDraft);
-                DotaDotaEngine.broadcastHub.Clients.All.heroPickCallback(DotaDotaEngine.GetPickedHeroSound(pickedId));
+                try {
+                    var pickedHeroSound = DotaDotaEngine.GetPickedHeroSound(pickedId);
+                    DotaDotaEngine.broadcastHub.Clients.All.heroPickCallback(pickedHeroSound);
+                }
+                catch (Exception) { }
                 return true;
             };
         }

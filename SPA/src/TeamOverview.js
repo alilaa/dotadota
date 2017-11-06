@@ -2,10 +2,7 @@
  * Created by an-ali on 2017-06-03.
  */
 import React, { Component } from 'react';
-import ProgressBar from 'react-bootstrap/lib/ProgressBar';
 import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
-import Table from 'react-bootstrap/lib/Table';
-import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 

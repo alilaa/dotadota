@@ -13,21 +13,31 @@ import TeamOverview from './TeamOverview';
 
 var SoundOverview = React.createClass({
     getInitialState: function() {
-        return {spawn: "", soundPlaying: Sound.status.STOPPED};
+        return {spawn: "", soundPlaying: Sound.status.STOPPED, playArray: []};
     },
 
     componentDidMount: function() {
-        SetupHub(this.gotData, this.heroPicked);
-    },
-    gotData: function(result){
-        var d = result;
-        console.log("Got data pumped from server :) see below: ");
-        console.log(d);
+        SetupHub(()=>{}, this.heroPicked);
     },
     heroPicked: function(pickedHeroSound){
         console.log("hero got picked:" + pickedHeroSound);
-        this.setState({spawn: pickedHeroSound});
-        this.setState({soundPlaying: Sound.status.PLAYING});
+        //this.setState({spawn: pickedHeroSound});
+        //this.setState({soundPlaying: Sound.status.PLAYING});
+        this.state.playArray.push(pickedHeroSound);
+        this.playSoundFromCue(false);
+        console.log("soundarray");
+        console.log(this.state.playArray);
+    },
+    playSoundFromCue: function(stopped){
+        if(stopped){
+            this.state.soundPlaying = Sound.status.STOPPED
+        }
+        console.log("playsoundfromcue triggered");
+        if(this.state.soundPlaying === Sound.status.STOPPED && this.state.playArray.length !== 0){
+            //play the next sound
+            console.log("sound should be played");
+            this.setState({spawn: this.state.playArray.pop(), soundPlaying: Sound.status.PLAYING});
+        }
     },
     componentWillUnmount: function() {
         this.serverRequest.abort();
@@ -39,6 +49,7 @@ var SoundOverview = React.createClass({
                 <Sound
                     url={this.state.spawn}
                     playStatus={this.state.soundPlaying}
+                    onFinishedPlaying={()=>{this.playSoundFromCue(true)}}
                 />
             </div>
         );
@@ -47,12 +58,12 @@ var SoundOverview = React.createClass({
 
 var OverviewView = React.createClass({
     getInitialState: function() {
-        return {data: [], spawn: "", soundPlaying: Sound.status.STOPPED};
+        return {data: []};
     },
 
     componentDidMount: function() {
         this.getData();
-        SetupHub(this.gotData, this.heroPicked);
+        SetupHub(this.gotData, ()=>{});
     },
     getData: function(){
         this.serverRequest = $.get('/api/GetDraft', function (result) {
@@ -67,14 +78,7 @@ var OverviewView = React.createClass({
         console.log("Got data pumped from server :) see below: ");
         console.log(d);
         this.setState({data: d});
-        this.setState({soundPlaying: Sound.status.STOPPED});
     },
-    heroPicked: function(pickedHeroSound){
-        console.log("hero got picked:" + pickedHeroSound);
-        this.setState({spawn: pickedHeroSound});
-        this.setState({soundPlaying: Sound.status.PLAYING});
-    },
-
     componentWillUnmount: function() {
         this.serverRequest.abort();
     },
@@ -105,10 +109,6 @@ var OverviewView = React.createClass({
                         <Col lg={4} md={4} sm={4} xs={4}><Well><TeamOverview team={teams[1]} player={player} draftDict={draftDict}/></Well></Col>
                     </Row>
                 </Grid>
-                <Sound
-                    url={this.state.spawn}
-                    playStatus={this.state.soundPlaying}
-                />
             </div>
         );
     }

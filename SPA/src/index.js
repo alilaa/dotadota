@@ -28,7 +28,7 @@ var FactionView = React.createClass({
 
     componentDidMount: function() {
         this.getData();
-        SetupHub(this.gotData);
+        SetupHub(this.gotData, ()=>{});
     },
     getData: function(){
         this.serverRequest = $.get('/api/GetDraft', function (result) {
@@ -101,7 +101,7 @@ var FetchData = React.createClass({
 
     componentDidMount: function() {
         this.getData();
-        SetupHub(this.gotData);
+        SetupHub(this.gotData, ()=>{});
     },
     getData: function(){
         this.serverRequest = $.get('/api/GetDraft', function (result) {
@@ -371,7 +371,7 @@ var PlayerView = React.createClass({
     componentDidMount: function() {
         this.getData();
         //this.intervalId = setInterval(this.getData, 15000);
-        SetupHub(this.gotData);
+        SetupHub(this.gotData, ()=>{});
     },
     getData: function(){
         this.serverRequest = $.get('/api/GetDraft', function (result) {
