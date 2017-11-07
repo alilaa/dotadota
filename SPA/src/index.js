@@ -96,7 +96,7 @@ var FactionView = React.createClass({
 
 var FetchData = React.createClass({
     getInitialState: function() {
-        return {data: []};
+        return {data: [], password: ""};
     },
 
     componentDidMount: function() {
@@ -127,6 +127,9 @@ var FetchData = React.createClass({
         });
 
     },
+    handlePasswordChange (event){
+        this.setState({password: event.target.value});
+    },
 
     render: function() {
         console.log(this.state.data);
@@ -140,6 +143,18 @@ var FetchData = React.createClass({
         var isEmpty = this.state.data.length === 0;
         if (isEmpty) {
             return null;
+        } if(this.state.password !== "dagon5"){
+            return (<div><FormGroup>
+                <InputGroup>
+                    <FormControl
+                        type="password"
+                        value={this.state.password}
+                        placeholder={"Password"}
+                        onChange={this.handlePasswordChange}
+                    />
+                </InputGroup>
+            </FormGroup>
+            </div>);
         }
         return (
                     <Grid fluid={true}>

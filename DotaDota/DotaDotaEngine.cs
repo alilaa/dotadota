@@ -158,6 +158,14 @@ namespace DotaDota {
         public static int SetPlayerHeroPicked(Guid playerGuid) {
             try {
                 var selectedId = LatestDraft.PlayerHeroPoolDict[playerGuid].HeroPool.First(h => h.Selected).id;
+                if (LatestDraft.PlayerHeroPoolDict[playerGuid].SelectedHeroId != 0) {
+                    //if hero is already picked we dont want to emote a pick sound... unless.
+                    if (LatestDraft.AllPlayers.First(p => p.id == playerGuid).Name == "Ponuts") {
+                        var pickedHeroSound = DotaDotaEngine.GetDagonSoundAndImage();
+                        DotaDotaEngine.broadcastHub.Clients.All.heroPickCallback(pickedHeroSound);
+                    }
+                    return -1;
+                }
                 LatestDraft.PlayerHeroPoolDict[playerGuid].SelectedHeroId = selectedId;
                 return selectedId;
             }
@@ -208,6 +216,10 @@ namespace DotaDota {
 
         public static BusinessEntity.HeroSoundAndImage GetPickedHeroSoundAndImage(int pickedId) {
             return new BusinessEntity.HeroSoundAndImage(AllHeroes.First(x => x.id == pickedId).spawn, "http://cdn.dota2.com/apps/dota2/images/heroes/" + AllHeroes.First(x => x.id == pickedId).shortCode + "_vert.jpg");
+        }
+
+        public static BusinessEntity.HeroSoundAndImage GetDagonSoundAndImage() {
+            return new BusinessEntity.HeroSoundAndImage("https://dota2.gamepedia.com/media/dota2.gamepedia.com/7/7b/Dagon.mp3", "http://cdn.dota2.com/apps/dota2/images/items/dagon_5_lg.png");
         }
     }
 }
