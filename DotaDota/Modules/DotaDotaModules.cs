@@ -112,7 +112,7 @@ namespace DotaDota.Modules {
                 //Pump the updated context to the clients with SignalR
                 DotaDotaEngine.broadcastHub.Clients.All.dataPump(DotaDotaEngine.LatestDraft);
                 try {
-                    var pickedHeroSound = DotaDotaEngine.GetPickedHeroSound(pickedId);
+                    var pickedHeroSound = DotaDotaEngine.GetPickedHeroSoundAndImage(pickedId);
                     DotaDotaEngine.broadcastHub.Clients.All.heroPickCallback(pickedHeroSound);
                 }
                 catch (Exception) { }

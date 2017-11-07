@@ -8,6 +8,19 @@ using Newtonsoft.Json;
 namespace DotaDota {
     public class BusinessEntity {
 
+        public class HeroSoundAndImage {
+            [JsonProperty("sound")]
+            public string sound { get; set; }
+
+            [JsonProperty("image")]
+            public string image { get; set; }
+
+            public HeroSoundAndImage(string sound, string image) {
+                this.sound = sound;
+                this.image = image;
+            }
+        }
+
         public class PlayerHeroPool {
             [JsonProperty("heroPool")]
             public List<Heroes.Hero> HeroPool;

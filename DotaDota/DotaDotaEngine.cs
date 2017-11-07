@@ -206,8 +206,8 @@ namespace DotaDota {
             LatestDraft.GenerateSitOut(noOfSitOut);
         }
 
-        public static string GetPickedHeroSound(int pickedId) {
-            return AllHeroes.First(x => x.id == pickedId).spawn;
+        public static BusinessEntity.HeroSoundAndImage GetPickedHeroSoundAndImage(int pickedId) {
+            return new BusinessEntity.HeroSoundAndImage(AllHeroes.First(x => x.id == pickedId).spawn, "http://cdn.dota2.com/apps/dota2/images/heroes/" + AllHeroes.First(x => x.id == pickedId).shortCode + "_vert.jpg");
         }
     }
 }

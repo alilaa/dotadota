@@ -13,14 +13,14 @@ import TeamOverview from './TeamOverview';
 
 var SoundOverview = React.createClass({
     getInitialState: function() {
-        return {spawn: "", soundPlaying: Sound.status.STOPPED, playArray: []};
+        return {spawn: "", image:"", soundPlaying: Sound.status.STOPPED, playArray: []};
     },
 
     componentDidMount: function() {
         SetupHub(()=>{}, this.heroPicked);
     },
     heroPicked: function(pickedHeroSound){
-        console.log("hero got picked:" + pickedHeroSound);
+        console.log("hero got picked:" + pickedHeroSound.sound);
         //this.setState({spawn: pickedHeroSound});
         //this.setState({soundPlaying: Sound.status.PLAYING});
         this.state.playArray.push(pickedHeroSound);
@@ -30,19 +30,28 @@ var SoundOverview = React.createClass({
     },
     playSoundFromCue: function(stopped){
         if(stopped){
-            this.state.soundPlaying = Sound.status.STOPPED
+            this.state.soundPlaying = Sound.status.STOPPED;
+            this.setState({image:""});
         }
         console.log("playsoundfromcue triggered");
         if(this.state.soundPlaying === Sound.status.STOPPED && this.state.playArray.length !== 0){
             //play the next sound
             console.log("sound should be played");
-            this.setState({spawn: this.state.playArray.pop(), soundPlaying: Sound.status.PLAYING});
+            var current = this.state.playArray.shift();
+            this.setState({spawn: current.sound, image: current.image, soundPlaying: Sound.status.PLAYING});
         }
     },
     componentWillUnmount: function() {
         this.serverRequest.abort();
     },
     render: function() {
+        var flashStyle = {
+            position: 'absolute',
+            top: '45%',
+            left: '50%',
+            marginLeft: '-235px',
+            marginTop: '-272px'
+        }
         return (
             <div>
                 <OverviewView/>
@@ -51,6 +60,7 @@ var SoundOverview = React.createClass({
                     playStatus={this.state.soundPlaying}
                     onFinishedPlaying={()=>{this.playSoundFromCue(true)}}
                 />
+                <img width="470" src={this.state.image} style={flashStyle}></img>
             </div>
         );
     }
