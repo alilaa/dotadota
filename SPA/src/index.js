@@ -528,7 +528,6 @@ var PlayerView = React.createClass({
         var player = this.props.location.query.player;
         var playerFaction = getPlayerFaction(teams, player);
         var playerTeamArrayId = getPlayerTeamArrayId(teams, player);
-        console.log("player faction: " + playerFaction + "array id:" +  playerTeamArrayId);
 
         var isEmpty = this.state.data.length === 0;
         if (isEmpty) {
@@ -554,10 +553,10 @@ var getPlayerFaction = function(teams, player){
     var playersTeam0 = teams && teams[0] && teams[0].players;
     var factionTeam0 = teams && teams[0] && teams[0].faction;
     var factionTeam1 = teams && teams[1] && teams[1].faction;
-    console.log("players: " + playersTeam0);
+
     var t0 = false;
     playersTeam0 && playersTeam0.forEach(function(p){if(p.id===player){t0 = true}},this);
-    console.log("t0:" + t0);
+
     if(t0){
         return factionTeam0;
     }
@@ -570,10 +569,9 @@ var getPlayerTeamArrayId = function(teams, player){
     var playersTeam0 = teams && teams[0] && teams[0].players;
     var factionTeam0 = teams && teams[0] && teams[0].faction;
     var factionTeam1 = teams && teams[1] && teams[1].faction;
-    console.log("players: " + playersTeam0);
     var t0 = false;
     playersTeam0 && playersTeam0.forEach(function(p){if(p.id===player){t0 = true}},this);
-    console.log("t0:" + t0);
+
     if(t0){
         return 0;
     }
