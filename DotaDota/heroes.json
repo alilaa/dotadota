@@ -2841,23 +2841,59 @@
     "complexity": 2,
     "url": "https://www.dota2.com/hero/MonkeyKing/",
     "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/4/4e/Monkey_spawn_01.mp3"
-  }
+  },
   {
-"id":119,
-"name":"npc_dota_hero_dark_willow",
-"localized_name":"Dark Willow",
-"primary_attr":"int",
-"attack_type":"Ranged",
-"roles":["Support","Nuker","Disabler","Escape"],
-"legs":2
-},
-{
-"id":120,
-"name":"npc_dota_hero_pangolier",
-"localized_name":"Pangolier",
-"primary_attr":"agi",
-"attack_type":"Melee",
-"roles":["Carry","Nuker","Disabler","Durable","Escape","Initiator"],
-"legs":2
-}
+    "id": 119,
+    "code": "npc_dota_hero_dark_willow",
+    "name": "Dark Willow",
+    "aliases": [
+      "Sylph"
+    ],
+    "team": "radiant",
+    "roles": {
+      "support": 2,
+      "nuker": 1,
+      "disabler": 1,
+      "escape": 1
+    },
+    "primaryAttribute": "intellect",
+    "attack": "ranged",
+    "attackRate": 1,
+    "attackRange": 300,
+    "projectileSpeed": 0,
+    "movementSpeed": 305,
+    "movementTurnRate": 0.6,
+    "cmEnabled": true,
+    "complexity": 2,
+    "url": "https://www.dota2.com/hero/DarkWillow/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/a/ac/Sylph_hero_intro_01.mp3"
+  },
+  {
+    "id": 120,
+    "code": "npc_dota_hero_pangolier",
+    "name": "Pangolier",
+    "aliases": [
+      "Zorro Armadillo"
+    ],
+    "team": "radiant",
+    "roles": {
+      "carry": 2,
+      "nuker": 1,
+      "disabler": 1,
+      "durable": 1,
+      "escape": 1,
+      "Initiator": 1 
+    },
+    "primaryAttribute": "agility",
+    "attack": "melee",
+    "attackRate": 1,
+    "attackRange": 300,
+    "projectileSpeed": 0,
+    "movementSpeed": 305,
+    "movementTurnRate": 0.6,
+    "cmEnabled": true,
+    "complexity": 2,
+    "url": "https://www.dota2.com/hero/Pangolier/",
+    "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/d/d4/Pangolin_spawn_01.mp3"
+  }
 ]
