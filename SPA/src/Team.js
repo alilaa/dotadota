@@ -55,7 +55,7 @@ var HeroDraft = React.createClass({
         var admin = this.props.admin
         var playersMap = this.props.players.map(function(playerInstance){
             return  (
-                    <div>
+                    <div key={playerInstance.id}>
                         <PlayerName currentPlayer={playerInstance} admin={admin} sitOutArray={component.state.sitOutArray}/>
                         <SitOutName currentPlayer={playerInstance} admin={admin} sitOutArray={component.state.sitOutArray}/>
                         <HeroPool currentPlayer={playerInstance.id} draftDict={draftDict} admin={admin} sitOutCallback={component.sitOutCallback}/>
@@ -88,14 +88,14 @@ var HeroPool = React.createClass({
         var imageUrlLarge = function(shortCode){return 'http://cdn.dota2.com/apps/dota2/images/heroes/' + shortCode + '_lg.png'};
         var imageUrlFull = function(shortCode){return 'http://cdn.dota2.com/apps/dota2/images/heroes/' + shortCode + '_vert.jpg'};
         var sitOut = false;
-        var playerPool = heroPool && heroPool.map(function(hero){
+        var playerPool = heroPool && heroPool.map(function(hero,index){
             if (hero.name === "iceFrog"){
                 if(!sitOut){this.props.sitOutCallback(currentPlayer);}
                 sitOut = true;
-                return (<img src="http://i.imgur.com/S910xlC.png" width="33"/>);
+                return (<img src="http://i.imgur.com/S910xlC.png" width="33" key={index}/>);
             }
             return (
-                <img src={imageUrlSmall(hero.shortCode)} className={hero.selected ? "":"desaturate"}/>
+                <img src={imageUrlSmall(hero.shortCode)} className={hero.selected ? "":"desaturate"} key={index}/>
             );
             },this);
 
@@ -104,7 +104,7 @@ var HeroPool = React.createClass({
         return (
             <Row>
                 <Col xs={10} xsOffset={1}>
-                    <p className="team"><div>{playerPool}</div></p>
+                    <div className="team"><div>{playerPool}</div></div>
                     <br/>
                 </Col>
             </Row>

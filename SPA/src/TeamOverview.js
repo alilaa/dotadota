@@ -42,14 +42,14 @@ var Players = React.createClass({
         var faction = this.props.faction;
         var playersMap = this.props.players.map(function(playerInstance){
             return  (
-                    <Row>
+                    <Row key={playerInstance.id}>
                             <PlayerAndName currentPlayer={playerInstance} draftDict={draftDict} faction={faction} />
                     </Row>
             )
         });
         var sitOutMap = this.props.players.map(function(playerInstance){
             return  (
-                <Row>
+                <Row key={playerInstance.id}>
                     <PlayerAndName currentPlayer={playerInstance} draftDict={draftDict} faction={faction} waterBoys={true}/>
                 </Row>
             )
@@ -75,7 +75,7 @@ var Players = React.createClass({
 
 var PlayerAndName = React.createClass({
     getInitialState: function(){
-        return{currentPlayer: [], draftDict: draftDict(), faction: 0, waterBoys: false};
+        return{currentPlayer: [], draftDict: [], faction: 0, waterBoys: false};
     } ,
     componentDidMount: function(){
         var component = this;
@@ -87,11 +87,9 @@ var PlayerAndName = React.createClass({
         var playerInstance = this.props.currentPlayer;
         var currentPlayer = this.props.currentPlayer.id;
         var draftDict = this.props.draftDict;
-        var heroPool = draftDict[currentPlayer] && draftDict[currentPlayer].heroPool;
-        var heroPoolSelectedHeroId = draftDict[currentPlayer] && draftDict[currentPlayer].selectedHeroId;
-        var imageUrlSmall = function(shortCode){return 'http://cdn.dota2.com/apps/dota2/images/heroes/' + shortCode + '_sb.png'};
+        var heroPool = draftDict && draftDict[currentPlayer] && draftDict[currentPlayer].heroPool;
+        var heroPoolSelectedHeroId = draftDict && draftDict[currentPlayer] && draftDict[currentPlayer].selectedHeroId;
         var imageUrlLarge = function(shortCode){return 'http://cdn.dota2.com/apps/dota2/images/heroes/' + shortCode + '_lg.png'};
-        var imageUrlFull = function(shortCode){return 'http://cdn.dota2.com/apps/dota2/images/heroes/' + shortCode + '_vert.jpg'};
         var image = {};
         var sitOut = false;
 
@@ -128,8 +126,6 @@ var PlayerAndName = React.createClass({
     }
 });
 
-
-
 var getFaction = function(faction){
     switch(faction){
         case 0:
@@ -140,113 +136,4 @@ var getFaction = function(faction){
             return "Unknown";
     }
 };
-
-var draftDict = function() {
-    return {
-        "playerHeroPoolDict": {
-            "514d8302-b3e7-43fc-9c7c-5a3ceee98087": {
-                "heroPool": [
-                    {
-                        "id": 99,
-                        "code": "npc_dota_hero_bristleback",
-                        "name": "Bristleback",
-                        "shortCode": "bristleback",
-                        "selected": false,
-                        "aliases": [
-                            "Rigwarl",
-                            "bb"
-                        ],
-                        "team": "dire",
-                        "roles": {
-                            "carry": 2,
-                            "escape": 0,
-                            "nuker": 1,
-                            "initiator": 1,
-                            "durable": 3,
-                            "disabler": null,
-                            "jungler": null,
-                            "support": null,
-                            "pusher": null
-                        },
-                        "primaryAttribute": "strength",
-                        "attack": "melee",
-                        "attackRate": 1,
-                        "attackRange": 150,
-                        "projectileSpeed": 0,
-                        "movementSpeed": 290,
-                        "movementTurnRate": 1,
-                        "cmEnabled": true,
-                        "complexity": 1,
-                        "url": "https://www.dota2.com/hero/Bristleback/",
-                        "spawn": null
-                    },
-                    {
-                        "id": 34,
-                        "code": "npc_dota_hero_tinker",
-                        "name": "Tinker",
-                        "shortCode": "tinker",
-                        "selected": false,
-                        "aliases": [],
-                        "team": "dire",
-                        "roles": {
-                            "carry": 1,
-                            "escape": 0,
-                            "nuker": 3,
-                            "initiator": null,
-                            "durable": null,
-                            "disabler": null,
-                            "jungler": null,
-                            "support": null,
-                            "pusher": 2
-                        },
-                        "primaryAttribute": "intellect",
-                        "attack": "ranged",
-                        "attackRate": 1,
-                        "attackRange": 500,
-                        "projectileSpeed": 900,
-                        "movementSpeed": 305,
-                        "movementTurnRate": 0.6,
-                        "cmEnabled": true,
-                        "complexity": 2,
-                        "url": "https://www.dota2.com/hero/Tinker/",
-                        "spawn": null
-                    },
-                    {
-                        "id": 105,
-                        "code": "npc_dota_hero_techies",
-                        "name": "Techies",
-                        "shortCode": "techies",
-                        "selected": false,
-                        "aliases": [],
-                        "team": "radiant",
-                        "roles": {
-                            "carry": 0,
-                            "escape": 0,
-                            "nuker": 3,
-                            "initiator": null,
-                            "durable": null,
-                            "disabler": 1,
-                            "jungler": null,
-                            "support": null,
-                            "pusher": null
-                        },
-                        "primaryAttribute": "intellect",
-                        "attack": "ranged",
-                        "attackRate": 1,
-                        "attackRange": 700,
-                        "projectileSpeed": 900,
-                        "movementSpeed": 270,
-                        "movementTurnRate": 0.5,
-                        "cmEnabled": true,
-                        "complexity": 2,
-                        "url": "https://www.dota2.com/hero/Techies/",
-                        "spawn": null
-                    }
-                ],
-                "selectedHeroId": 0
-            }
-        }
-    }
-}
-
 module.exports = TeamOverview;

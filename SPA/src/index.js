@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import ListGroup from 'react-bootstrap/lib/ListGroup';
 import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
 import Well from 'react-bootstrap/lib/Well';
-import Table from 'react-bootstrap/lib/Table';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
@@ -13,10 +11,11 @@ import Button from 'react-bootstrap/lib/Button';
 import { FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap';
 import $ from 'jquery';
 import 'signalr/jquery.signalR.js';
-
+//internal
 import Team from './Team';
 import TeamPlayer from './TeamPlayer';
 import SoundOverview from './Overview';
+import BanningView from './BanningVIew';
 import SetupHub from './Hub';
 
 
@@ -25,7 +24,6 @@ var FactionView = React.createClass({
     getInitialState: function() {
         return {data: []};
     },
-
     componentDidMount: function() {
         this.getData();
         SetupHub(this.gotData, ()=>{}, ()=>{});
@@ -33,8 +31,6 @@ var FactionView = React.createClass({
     getData: function(){
         this.serverRequest = $.get('/api/GetDraft', function (result) {
             var d = result;
-            console.log("Got data pulled by interval, see below: ");
-            console.log(d);
             this.setState({ data: d });
         }.bind(this));
     },
@@ -48,7 +44,6 @@ var FactionView = React.createClass({
     componentWillUnmount: function() {
         this.serverRequest.abort();
     },
-
     render: function() {
         var dire = {
             backgroundImage: 'url(http://i.imgur.com/HrIj50P.jpg)',
@@ -73,7 +68,7 @@ var FactionView = React.createClass({
             left: '0',
         };
         console.log(this.state.data);
-        var teams = this.state.data.teams;
+        var teams = this.state.data && this.state.data.teams;
         var draftDict = this.state.data.playerHeroPoolDict;
         var player = this.props.location.query.player;
         var faction = this.props.route.faction;
@@ -94,11 +89,10 @@ var FactionView = React.createClass({
     }
 });
 
-var FetchData = React.createClass({
+var AdminView = React.createClass({
     getInitialState: function() {
         return {data: [], password: ""};
     },
-
     componentDidMount: function() {
         this.getData();
         SetupHub(this.gotData, ()=>{}, ()=>{});
@@ -165,7 +159,7 @@ var FetchData = React.createClass({
                             <Col xs={2}><Well><Team team={teams[1]} player={player} draftDict={draftDict} admin={true}/></Well></Col>
                         </Row>
                         <Row>
-                            <Banning />
+                            <BanningView />
                         </Row>
 
                     </Grid>
@@ -214,11 +208,11 @@ var DraftPlayerDisplay = React.createClass({
                         <br/>
                         <br/>
                     </Col>
-                    <col xs={6}>
+                    <Col xs={6}>
                         <br/>
                         <div className="player">Misc:</div>
                         <Button btn btn-default btn-lg onClick={()=>this.apiCall("api/ClearAllPlayerSitOut")}>Reset all sitout counters</Button>
-                    </col>
+                    </Col>
                 </Row>
                 <Row>
                     <Col xs={6}>
@@ -313,7 +307,7 @@ var InDraft = React.createClass({
             if(renderIn && playerGuidInDraft.indexOf(playerInstance.id) == -1){return;};
             if(!renderIn && playerGuidInDraft.indexOf(playerInstance.id) !== -1){return;};
             return  (
-                <ListGroupItem onClick={() => callbackPlayerClick(playerInstance.id)}>
+                <ListGroupItem onClick={() => callbackPlayerClick(playerInstance.id)} key={playerInstance.id}>
                     <div className="buttonPlayer"> {playerInstance.name}</div>
                 </ListGroupItem>
             )
@@ -331,95 +325,6 @@ var InDraft = React.createClass({
         }
         return (
             <ListGroup>{playersMap}</ListGroup>
-        )
-    },
-});
-
-var Banning = React.createClass({
-    intervalId: null,
-    getInitialState: function() {
-        return {banState: []};
-    },
-    getData: function(){
-        this.serverRequest = $.get('/api/banState', function (result) {
-            var d = result;
-            console.log("Got banstate, see below: ");
-            console.log(d);
-            this.setState({ banState: d });
-        }.bind(this));
-    },
-    componentDidMount: function() {
-        this.getData();
-        SetupHub(()=>{}, ()=>{}, this.gotBanState);
-    },
-    gotBanState: function(state){
-        this.setState({banState: state});
-    },
-    ban: function(heroId){
-        this.serverRequest = $.get('/api/ban/' + heroId, function (result) {
-        });
-    },
-    unban: function(heroId){
-        this.serverRequest = $.get('/api/unban/' + heroId, function (result) {
-        });
-    },
-    render: function() {
-        var banState = this.props.banState;
-        console.log("banState");
-        console.log(banState);
-        var bannedHeroes = this.state.banState ? this.state.banState.banned : [];
-        console.log("bannedHeroes");
-        console.log(bannedHeroes);
-        var pickableHeroes = this.state.banState ? this.state.banState.pickable : [];
-        console.log("pickableHeroes");
-        console.log(pickableHeroes);
-        var imageUrlSmall = function(shortCode){return 'http://cdn.dota2.com/apps/dota2/images/heroes/' + shortCode + '_sb.png'};
-        var banMap = bannedHeroes && bannedHeroes.map(function(hero){
-            return  (
-                <Col xs={1}>
-                    <Row>
-                       <img src={imageUrlSmall(hero.shortCode)} onClick={()=>this.unban(hero.id)} />
-                    </Row>
-                    <Row>
-                       <div className="sitOut">{hero.name}</div>
-                    </Row>
-                </Col>
-            )
-        },this);
-        var pickMap = pickableHeroes && pickableHeroes.map(function(hero){
-            return  (
-                <Col xs={1}>
-                    <Row>
-                        <img src={imageUrlSmall(hero.shortCode)} onClick={()=>this.ban(hero.id)} />
-                    </Row>
-                    <Row>
-                        <div className="sitOut">{hero.name}</div>
-                    </Row>
-                </Col>
-            )
-        },this);
-        return (
-            <div>
-                <Grid fluid={true}>
-                <Row>
-                    <div className="player">Banned heroes:</div>
-                    <br/>
-                </Row>
-                <Row>
-                    {banMap}
-                </Row>
-                    <Row>
-                        <br/>
-                    </Row>
-                <Row>
-                    <div className="player">Pickable heroes:</div>
-                    <br/>
-                </Row>
-                <Row>
-                    {pickMap}
-                </Row>
-                </Grid>
-            </div>
         )
     },
 });
@@ -469,22 +374,16 @@ var PlayerAdding = React.createClass({
 });
 
 var PlayerView = React.createClass({
-    intervalId: null,
-    request: null,
     getInitialState: function() {
         return {data: []};
     },
-
     componentDidMount: function() {
         this.getData();
-        //this.intervalId = setInterval(this.getData, 15000);
         SetupHub(this.gotData, ()=>{}, ()=>{});
     },
     getData: function(){
         this.serverRequest = $.get('/api/GetDraft', function (result) {
             var d = result;
-            console.log("Got data pulled by interval, see below: ");
-            console.log(d);
             this.setState({ data: d });
         }.bind(this));
     },
@@ -494,11 +393,9 @@ var PlayerView = React.createClass({
         console.log(d);
         this.setState({data: d});
     },
-
     componentWillUnmount: function() {
         this.serverRequest.abort();
     },
-
     render: function() {
         var dire = {
             //backgroundImage: 'url(http://i.imgur.com/HrIj50P.jpg)',
@@ -580,5 +477,5 @@ var getPlayerTeamArrayId = function(teams, player){
     }
 };
 
-ReactDOM.render(<Router history={browserHistory}><Route path="/admin" component={FetchData}/><Route path="/player" component={PlayerView}/><Route path="/radiant" faction="1" component={FactionView}/><Route path="/dire" faction="0" component={FactionView}/><Route path="/overview" component={SoundOverview}/></Router>, document.getElementById('imageProgress'));
+ReactDOM.render(<Router history={browserHistory}><Route path="/admin" component={AdminView}/><Route path="/player" component={PlayerView}/><Route path="/radiant" faction="1" component={FactionView}/><Route path="/dire" faction="0" component={FactionView}/><Route path="/overview" component={SoundOverview}/></Router>, document.getElementById('imageProgress'));
 
