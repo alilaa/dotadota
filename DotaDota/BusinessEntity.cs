@@ -63,9 +63,12 @@ namespace DotaDota {
                 Random rnd = new Random();
                 Dictionary<Guid,PlayerHeroPool> newPoolDict = new Dictionary<Guid, PlayerHeroPool>();
                 var allHeroes = DotaDotaEngine.AllHeroes;
+                var bannedHeroes = DotaDotaEngine.BannedHeroes();
                 var usedHeroes = new List<Heroes.Hero>();
+                //remove banned heroes
+                usedHeroes.AddRange(bannedHeroes);
                 //Death Pophet, bloodseeker and silencer are banned in 10v10
-                if(GetPlayers().Count > 10) { 
+                if (GetPlayers().Count > 10) { 
                     usedHeroes.AddRange(allHeroes.Where(hero => hero.id == 43 || hero.id == 4 || hero.id == 75));
                 }
                 foreach (var player in GetPlayers()) {
@@ -171,6 +174,18 @@ namespace DotaDota {
             public static string Agility = "agility";
             public static string Strength = "strength";
             public static string Intellect = "intellect";
+        }
+
+        public class BanState {
+            [JsonProperty("banned")]
+            public List<Heroes.Hero> Banned { get; set; }
+            [JsonProperty("pickable")]
+            public List<Heroes.Hero> Pickable { get; set; }
+
+            public BanState(List<Heroes.Hero> banned, List<Heroes.Hero> pickable) {
+                this.Banned = banned;
+                this.Pickable = pickable;
+            }
         }
     }
 }

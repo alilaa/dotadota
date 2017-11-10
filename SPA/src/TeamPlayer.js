@@ -251,7 +251,7 @@ var HeroPoolPlayerDraft = React.createClass({
                 return null;
             }
                 return (
-                    <a className="padding"><img src={imageUrlFull(hero.shortCode)} onClick={()=>this.onClick(hero.id)}  className={hero.selected ? "glow":"desaturate"}/></a>
+                    <a className="padding"><img height="272" src={imageUrlFull(hero.shortCode)} onClick={()=>this.onClick(hero.id)}  className={hero.selected ? "glow":"desaturate"}/></a>
                 )
             },this);
 

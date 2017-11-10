@@ -217,4 +217,47 @@ namespace DotaDota.Modules {
 
         }
     }
+
+    public class APIBanHeroModule : NancyModule {
+        public APIBanHeroModule() {
+            Get["api/ban/{heroId}"] = parameters => {
+                DotaDotaEngine.BanHero(parameters.heroId);
+                //Pump the updated context to the clients with SignalR
+                DotaDotaEngine.broadcastHub.Clients.All.heroBanCallback(new BusinessEntity.BanState(DotaDotaEngine.BannedHeroes(), DotaDotaEngine.PickableHeroes()));
+                return true;
+            };
+
+        }
+    }
+
+    public class APIUnBanHeroModule : NancyModule {
+        public APIUnBanHeroModule() {
+            Get["api/unban/{heroId}"] = parameters => {
+                DotaDotaEngine.UnBanHero(parameters.heroId);
+                //Pump the updated context to the clients with SignalR
+                DotaDotaEngine.broadcastHub.Clients.All.heroBanCallback(new BusinessEntity.BanState(DotaDotaEngine.BannedHeroes(), DotaDotaEngine.PickableHeroes()));
+                return true;
+            };
+
+        }
+    }
+
+    public class APIBannedHeroesModule : NancyModule {
+        public APIBannedHeroesModule() {
+            Get["api/bannedHeroes"] = parameters => Response.AsJson(DotaDotaEngine.BannedHeroes());
+
+        }
+    }
+
+    public class APIPickableHeroesModule : NancyModule {
+        public APIPickableHeroesModule() {
+            Get["api/pickableHeroes"] = parameters => Response.AsJson(DotaDotaEngine.PickableHeroes());
+        }
+    }
+
+    public class APIBanStateModule : NancyModule {
+        public APIBanStateModule() {
+            Get["api/banState"] = parameters => Response.AsJson(new BusinessEntity.BanState(DotaDotaEngine.BannedHeroes(), DotaDotaEngine.PickableHeroes()));
+        }
+    }
 }

@@ -15,6 +15,7 @@ namespace DotaDota {
         private string getHeroesUrl = "https://raw.githubusercontent.com/alilaa/dotadota/master/DotaDota/heroes.json";
         private static DotaDotaEngine engine;
         public static List<Heroes.Hero> AllHeroes;
+        public static List<Heroes.Hero> bannedHeroes;
         public static BusinessEntity.Draft LatestDraft;
         public static List<BusinessEntity.Player> AllPlayers = new List<BusinessEntity.Player>();
         public static List<BusinessEntity.Player> CurrentPlayers;
@@ -60,6 +61,7 @@ namespace DotaDota {
                         jsonstring.Wait();
                         deserializedheroes = JsonConvert.DeserializeObject<List<Heroes.Hero>>(jsonstring.Result);
                         DotaDotaEngine.AllHeroes = deserializedheroes;
+                        DotaDotaEngine.bannedHeroes = new List<Heroes.Hero>();
                     });
             }
             catch (Exception e) {
@@ -221,5 +223,32 @@ namespace DotaDota {
         public static BusinessEntity.HeroSoundAndImage GetDagonSoundAndImage() {
             return new BusinessEntity.HeroSoundAndImage("https://dota2.gamepedia.com/media/dota2.gamepedia.com/7/7b/Dagon.mp3", "http://cdn.dota2.com/apps/dota2/images/items/dagon_5_lg.png");
         }
+
+        public static List<Heroes.Hero> PickableHeroes() {
+            try {
+                return AllHeroes.Where(h => !bannedHeroes.Any(bh => bh.id == h.id)).ToList();
+            }
+            catch (Exception) { }
+            return new List<Heroes.Hero>();
+        }
+
+        public static List<Heroes.Hero> BannedHeroes() {
+            return bannedHeroes;
+        }
+
+        public static void BanHero(int id) {
+            if (bannedHeroes.Any(h => h.id == id)) {
+                return;
+            }
+            bannedHeroes.Add(AllHeroes.First(h => h.id == id));
+        }
+        public static void UnBanHero(int id) {
+            if (bannedHeroes.Any(h => h.id == id)) {
+                bannedHeroes.Remove(bannedHeroes.First(h => h.id == id));
+            }
+            
+        }
+
+
     }
 }

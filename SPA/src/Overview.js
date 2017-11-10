@@ -17,7 +17,7 @@ var SoundOverview = React.createClass({
     },
 
     componentDidMount: function() {
-        SetupHub(()=>{}, this.heroPicked);
+        SetupHub(()=>{}, this.heroPicked, ()=>{});
     },
     heroPicked: function(pickedHeroSound){
         console.log("hero got picked:" + pickedHeroSound.sound);
@@ -73,7 +73,7 @@ var OverviewView = React.createClass({
 
     componentDidMount: function() {
         this.getData();
-        SetupHub(this.gotData, ()=>{});
+        SetupHub(this.gotData, ()=>{}, ()=>{});
     },
     getData: function(){
         this.serverRequest = $.get('/api/GetDraft', function (result) {

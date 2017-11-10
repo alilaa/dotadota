@@ -28,7 +28,7 @@ var FactionView = React.createClass({
 
     componentDidMount: function() {
         this.getData();
-        SetupHub(this.gotData, ()=>{});
+        SetupHub(this.gotData, ()=>{}, ()=>{});
     },
     getData: function(){
         this.serverRequest = $.get('/api/GetDraft', function (result) {
@@ -101,7 +101,7 @@ var FetchData = React.createClass({
 
     componentDidMount: function() {
         this.getData();
-        SetupHub(this.gotData, ()=>{});
+        SetupHub(this.gotData, ()=>{}, ()=>{});
     },
     getData: function(){
         this.serverRequest = $.get('/api/GetDraft', function (result) {
@@ -163,6 +163,9 @@ var FetchData = React.createClass({
 
                             <Col xs={2}><Well><Team team={teams[0]} player={player} draftDict={draftDict} admin={true}/></Well></Col>
                             <Col xs={2}><Well><Team team={teams[1]} player={player} draftDict={draftDict} admin={true}/></Well></Col>
+                        </Row>
+                        <Row>
+                            <Banning />
                         </Row>
 
                     </Grid>
@@ -332,6 +335,95 @@ var InDraft = React.createClass({
     },
 });
 
+var Banning = React.createClass({
+    intervalId: null,
+    getInitialState: function() {
+        return {banState: []};
+    },
+    getData: function(){
+        this.serverRequest = $.get('/api/banState', function (result) {
+            var d = result;
+            console.log("Got banstate, see below: ");
+            console.log(d);
+            this.setState({ banState: d });
+        }.bind(this));
+    },
+    componentDidMount: function() {
+        this.getData();
+        SetupHub(()=>{}, ()=>{}, this.gotBanState);
+    },
+    gotBanState: function(state){
+        this.setState({banState: state});
+    },
+    ban: function(heroId){
+        this.serverRequest = $.get('/api/ban/' + heroId, function (result) {
+        });
+    },
+    unban: function(heroId){
+        this.serverRequest = $.get('/api/unban/' + heroId, function (result) {
+        });
+    },
+    render: function() {
+        var banState = this.props.banState;
+        console.log("banState");
+        console.log(banState);
+        var bannedHeroes = this.state.banState ? this.state.banState.banned : [];
+        console.log("bannedHeroes");
+        console.log(bannedHeroes);
+        var pickableHeroes = this.state.banState ? this.state.banState.pickable : [];
+        console.log("pickableHeroes");
+        console.log(pickableHeroes);
+        var imageUrlSmall = function(shortCode){return 'http://cdn.dota2.com/apps/dota2/images/heroes/' + shortCode + '_sb.png'};
+        var banMap = bannedHeroes && bannedHeroes.map(function(hero){
+            return  (
+                <Col xs={1}>
+                    <Row>
+                       <img src={imageUrlSmall(hero.shortCode)} onClick={()=>this.unban(hero.id)} />
+                    </Row>
+                    <Row>
+                       <div className="sitOut">{hero.name}</div>
+                    </Row>
+                </Col>
+            )
+        },this);
+        var pickMap = pickableHeroes && pickableHeroes.map(function(hero){
+            return  (
+                <Col xs={1}>
+                    <Row>
+                        <img src={imageUrlSmall(hero.shortCode)} onClick={()=>this.ban(hero.id)} />
+                    </Row>
+                    <Row>
+                        <div className="sitOut">{hero.name}</div>
+                    </Row>
+                </Col>
+            )
+        },this);
+        return (
+            <div>
+                <Grid fluid={true}>
+                <Row>
+                    <div className="player">Banned heroes:</div>
+                    <br/>
+                </Row>
+                <Row>
+                    {banMap}
+                </Row>
+                    <Row>
+                        <br/>
+                    </Row>
+                <Row>
+                    <div className="player">Pickable heroes:</div>
+                    <br/>
+                </Row>
+                <Row>
+                    {pickMap}
+                </Row>
+                </Grid>
+            </div>
+        )
+    },
+});
+
 var PlayerAdding = React.createClass({
     getInitialState: function(){
         return{value: ""};
@@ -386,7 +478,7 @@ var PlayerView = React.createClass({
     componentDidMount: function() {
         this.getData();
         //this.intervalId = setInterval(this.getData, 15000);
-        SetupHub(this.gotData, ()=>{});
+        SetupHub(this.gotData, ()=>{}, ()=>{});
     },
     getData: function(){
         this.serverRequest = $.get('/api/GetDraft', function (result) {
