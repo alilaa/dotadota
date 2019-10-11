@@ -2882,7 +2882,7 @@
       "disabler": 1,
       "durable": 1,
       "escape": 1,
-      "Initiator": 1 
+      "Initiator": 1
     },
     "primaryAttribute": "agility",
     "attack": "melee",
@@ -2895,5 +2895,61 @@
     "complexity": 2,
     "url": "https://www.dota2.com/hero/Pangolier/",
     "spawn": "https://dota2.gamepedia.com/media/dota2.gamepedia.com/d/d4/Pangolin_spawn_01.mp3"
+  },
+  {
+    "id": 121,
+    "code": "npc_dota_hero_grimstroke",
+    "name": "Grimstroke",
+    "aliases": [
+      "grimstroke"
+    ],
+    "team": "radiant",
+    "roles": {
+      "carry": 2,
+      "nuker": 1,
+      "disabler": 1,
+      "durable": 1,
+      "escape": 1,
+      "Initiator": 1
+    },
+    "primaryAttribute": "agility",
+    "attack": "melee",
+    "attackRate": 1,
+    "attackRange": 300,
+    "projectileSpeed": 0,
+    "movementSpeed": 305,
+    "movementTurnRate": 0.6,
+    "cmEnabled": true,
+    "complexity": 2,
+    "url": "https://www.dota2.com/hero/Grimstroke/",
+    "spawn": "https://gamepedia.cursecdn.com/dota2_gamepedia/a/a4/Grimstroke_spawn_01_02.mp3"
+  },
+  {
+    "id": 129,
+    "code": "npc_dota_hero_Mars",
+    "name": "Mars",
+    "aliases": [
+      "mars"
+    ],
+    "team": "radiant",
+    "roles": {
+      "carry": 2,
+      "nuker": 1,
+      "disabler": 1,
+      "durable": 1,
+      "escape": 1,
+      "Initiator": 1
+    },
+    "primaryAttribute": "agility",
+    "attack": "melee",
+    "attackRate": 1,
+    "attackRange": 300,
+    "projectileSpeed": 0,
+    "movementSpeed": 305,
+    "movementTurnRate": 0.6,
+    "cmEnabled": true,
+    "complexity": 2,
+    "url": "https://www.dota2.com/hero/Mars/",
+    "spawn": "https://gamepedia.cursecdn.com/dota2_gamepedia/6/6c/Mars_spawn_01.mp3"
   }
 ]
