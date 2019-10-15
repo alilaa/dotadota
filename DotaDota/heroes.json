@@ -2926,7 +2926,7 @@
   },
   {
     "id": 129,
-    "code": "npc_dota_hero_Mars",
+    "code": "npc_dota_hero_mars",
     "name": "Mars",
     "aliases": [
       "mars"
