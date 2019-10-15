@@ -93,7 +93,7 @@ var PlayerAndName = React.createClass({
         var image = {};
         var sitOut = false;
 
-        image[0] = <img src="https://placeholdit.imgix.net/~text?txtsize=7&bg=000000&txtclr=000000&txt=59%C3%9733&w=59&h=33" width="120px"/>;
+        image[0] = <img src="https://via.placeholder.com/59x33/000000?text=%20" width="120px"/>;
         var playerPool = heroPool && heroPool.forEach(function(hero){
                 if (hero.name === "iceFrog"){
                     image[0] = <img src="http://i.imgur.com/S910xlC.png" width="75px"/>;

@@ -159,7 +159,7 @@ var HeroPoolPlayer = React.createClass({
         var heroPoolSelectedHeroId = draftDict[currentPlayer] && draftDict[currentPlayer].selectedHeroId;
         var imageUrlSmall = function(shortCode){return 'http://cdn.dota2.com/apps/dota2/images/heroes/' + shortCode + '_sb.png'};
         var image = {};
-        image[0] = <img className={getFaction(this.props.faction)} src="https://placeholdit.imgix.net/~text?txtsize=7&bg=000000&txtclr=000000&txt=59%C3%9733&w=59&h=33"/>;
+        image[0] = <img className={getFaction(this.props.faction)} src="https://via.placeholder.com/59x33/000000?text=%20"/>;
         var sitOut = false;
         var playerPool = heroPool && heroPool.forEach(function(hero){
             if (hero.name === "iceFrog"){
