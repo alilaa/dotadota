@@ -71,37 +71,12 @@ namespace DotaDota {
         }
 
         public static string CreateRandomDraft(int noOfPlayers, int poolSize, int noOfSitOut = 0) {
-            Random rnd = new Random();
-            if (AllHeroes == null) {
-                return string.Empty;
-            }
-            ClearAllPlayerHeroSelected();
-            BusinessEntity.Draft draft;
-            List<BusinessEntity.Player> currentPlayers = new List<BusinessEntity.Player>();
-
+            var players = new List<string>();
             for (int i = 1; i <= noOfPlayers; i++) {
-                currentPlayers.Add(AllPlayers[i - 1]);
+                players.Add(AllPlayers[i - 1].id.ToString());
             }
-            //we need to make sure that the players with the lowest number of sit-out are placed in different teams.
-            var radiant = new BusinessEntity.Team(currentPlayers.OrderBy(pl => pl.SitOutCount).Take(1).ToList(), BusinessEntity.Faction.Radiant);
-            var dire = new BusinessEntity.Team(currentPlayers.OrderBy(pl => pl.SitOutCount).Skip(1).Take(1).ToList(), BusinessEntity.Faction.Dire);
 
-            var usedPlayers = new List<BusinessEntity.Player>();
-            usedPlayers.AddRange(currentPlayers.OrderBy(pl => pl.SitOutCount).Take(2).ToList());
-
-            var team1 = currentPlayers.Except(usedPlayers).OrderBy(x => rnd.Next()).Take((currentPlayers.Count - 2) / 2 + currentPlayers.Count % 2).ToList();
-            usedPlayers.AddRange(team1);
-            var team2 = currentPlayers.Except(usedPlayers).OrderBy(x => rnd.Next()).Take(currentPlayers.Count / 2).ToList();
-
-            radiant.Players.AddRange(team1);
-            dire.Players.AddRange(team2);
-
-            draft = new BusinessEntity.Draft(new List<BusinessEntity.Team> { dire, radiant }, AllPlayers);
-            draft.GenerateHeroPools(poolSize);
-            draft.GenerateSitOut(noOfSitOut);
-            LatestDraft = draft;
-            CurrentPlayers = currentPlayers;
-            return draft.ToString();
+            return CreateRandomDraftWithTeam(players, poolSize, noOfSitOut);
         }
 
         public static string CreateRandomDraftWithTeam(List<string> players, int poolSize, int noOfSitOut = 0) {
@@ -116,12 +91,32 @@ namespace DotaDota {
             foreach (var player in players) {
                 currentPlayers.Add(AllPlayers.Single(p => p.id.ToString() == player));
             }
+
             //we need to make sure that the players with the lowest number of sit-out are placed in different teams.
-            var radiant = new BusinessEntity.Team(currentPlayers.OrderBy(pl => pl.SitOutCount).Take(1).ToList(), BusinessEntity.Faction.Radiant);
-            var dire = new BusinessEntity.Team(currentPlayers.OrderBy(pl => pl.SitOutCount).Skip(1).Take(1).ToList(), BusinessEntity.Faction.Dire);
+            // If multiple people have the same sitout count it will always be the same two players divided like this.
+
+            // Take all players with same sitout. If more than 2 randomly select who goes to what team. 
+            int lowestSitOutCount = currentPlayers.OrderBy(pl => pl.SitOutCount).First().SitOutCount;
+            int secondLowest = currentPlayers.OrderBy(pl => pl.SitOutCount).ElementAt(1).SitOutCount;
+            var randomLowestSitouts = new List<BusinessEntity.Player>();
+            if (currentPlayers.Select(x => x.SitOutCount == lowestSitOutCount).Count() == 1) {
+                // 1 with lowest sitout
+                randomLowestSitouts = currentPlayers.Where(x => x.SitOutCount == lowestSitOutCount).ToList();
+                randomLowestSitouts.Add(currentPlayers.Where(x => x.SitOutCount == secondLowest).OrderBy(x => rnd.Next()).Take(1).First());
+            } else if (currentPlayers.Select(x => x.SitOutCount == lowestSitOutCount).Count() == 2) {
+                // two lowest, just add them.
+                randomLowestSitouts = currentPlayers.Where(x => x.SitOutCount == lowestSitOutCount).ToList();
+            } else if (currentPlayers.Select(x => x.SitOutCount == lowestSitOutCount).Count() > 2) {
+                // 2 or more with same sitout add to list for randomness
+                randomLowestSitouts = currentPlayers
+                                      .Where(x => x.SitOutCount == lowestSitOutCount).OrderBy(x => rnd.Next()).Take(2).ToList();
+            }
+
+            var radiant = new BusinessEntity.Team(randomLowestSitouts.OrderBy(x => rnd.Next()).Take(1).ToList(), BusinessEntity.Faction.Radiant);
+            var dire = new BusinessEntity.Team(randomLowestSitouts.Where(x => x.id != radiant.Players.First().id).ToList(), BusinessEntity.Faction.Dire);
 
             var usedPlayers = new List<BusinessEntity.Player>();
-            usedPlayers.AddRange(currentPlayers.OrderBy(pl => pl.SitOutCount).Take(2).ToList());
+            usedPlayers.AddRange(randomLowestSitouts);
 
             var team1 = currentPlayers.Except(usedPlayers).OrderBy(x => rnd.Next()).Take((currentPlayers.Count - 2) / 2 + currentPlayers.Count % 2).ToList();
             usedPlayers.AddRange(team1);

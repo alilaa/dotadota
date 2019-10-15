@@ -67,10 +67,10 @@ namespace DotaDota {
                 var usedHeroes = new List<Heroes.Hero>();
                 //remove banned heroes
                 usedHeroes.AddRange(bannedHeroes);
-                //Death Pophet, bloodseeker and silencer are banned in 10v10
-                if (GetPlayers().Count > 10) { 
-                    usedHeroes.AddRange(allHeroes.Where(hero => hero.id == 43 || hero.id == 4 || hero.id == 75));
-                }
+                //Death Pophet, bloodseeker and silencer are banned in 10v10 - but not in 12vs12 so lets not ban them
+                //if (GetPlayers().Count > 10) { 
+                //    usedHeroes.AddRange(allHeroes.Where(hero => hero.id == 43 || hero.id == 4 || hero.id == 75));
+                //}
                 foreach (var player in GetPlayers()) {
                     var heroPool = poolSize > 2 ? HeroPoolLarge(poolSize, allHeroes, usedHeroes, rnd) : HeroPoolSmall(poolSize, allHeroes, usedHeroes, rnd);
                     usedHeroes.AddRange(heroPool);
