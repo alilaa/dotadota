@@ -46,7 +46,7 @@
   "dependencies": {
     "gl-react": "^2.2.9",
     "gl-react-contrast-saturation-brightness": "^1.1.0",
-    "jquery": "^2.2.4",
+    "jquery": "^3.4.1",
     "react": "^0.14.6",
     "react-bootstrap": "^0.29.4",
     "react-dom": "^0.14.6",
